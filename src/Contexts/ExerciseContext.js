@@ -11,7 +11,7 @@ const ExerciseContextProvider = ({ children }) => {
             username: 'Big Bez',
             description: 'Rowin your wife',
             duration: 90,
-            date: new Date(),
+            date: '',
         }
     ]);
 

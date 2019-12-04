@@ -1,18 +1,21 @@
 import React, { useState, useContext } from 'react';
-import {ExerciseContext} from '../Contexts/ExerciseContext';
+import { ExerciseContext } from '../Contexts/ExerciseContext';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import styled from 'styled-components';
+import { setHours } from 'date-fns';
 
 const CreateExercise = () => {
     const { addExercise } = useContext(ExerciseContext);
 
+    const [ theDate, setTheDate ] = useState(new Date ());
+
     const [ exercise, setExercise ] = useState({
         username: '',
         description: '',
-        duration: 0,
-        date: new Date(),
-    });
+        duration: '',
+        date: '',
+    })
 
     const handleSubmit = e => {
         e.preventDefault();
@@ -20,17 +23,19 @@ const CreateExercise = () => {
         setExercise({
             username: '',
             description: '',
-            duration: 0,
+            duration: '',
             date: new Date(),
         })
     }
 
     const handleChange = e => {
-        setExercise({...exercise, [e.target.name]: e.target.value });
+        setExercise({...exercise, [e.target.name]: e.target.value, date: theDate });
+        //setExercise({...exercise, [exercise.date]: theDate});
+        console.log(exercise)
     }
 
     const handleDate = date => {
-        setExercise({...exercise, [date]: date });
+        setTheDate(date);
     }
 
     return (
@@ -38,7 +43,7 @@ const CreateExercise = () => {
             <h3>Create New Exercise Log</h3>
             <form onSubmit={handleSubmit}>
                 <div className="form-group">
-                    <label htmlfor="username">
+                    <label htmlFor="username">
                         Username:</label>
                     <select
                         required
@@ -53,6 +58,7 @@ const CreateExercise = () => {
                     <input
                         required
                         type="text"
+                        name="description"
                         className="form-control"
                         value={exercise.description}
                         onChange={handleChange}
@@ -63,6 +69,7 @@ const CreateExercise = () => {
                     <input
                         required
                         type="number"
+                        name="duration"
                         className="form-control"
                         value={exercise.duration}
                         onChange={handleChange}
@@ -72,9 +79,11 @@ const CreateExercise = () => {
                 <div className="form-group">
                     <label>Date:</label>
                     <DatePicker
-                        selected={new Date()}
-                        onChange={handleDate}
+                        selected={theDate}
+                        onChange={date => handleDate(date)}
                         dateFormat="dd/MM/yyyy"
+                        name="date"
+                        
                     />
                 </div>
             </form>
