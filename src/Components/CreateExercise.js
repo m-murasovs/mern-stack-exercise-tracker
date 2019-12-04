@@ -3,7 +3,6 @@ import { ExerciseContext } from '../Contexts/ExerciseContext';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import styled from 'styled-components';
-import { setHours } from 'date-fns';
 
 const CreateExercise = () => {
     const { addExercise } = useContext(ExerciseContext);
@@ -26,6 +25,7 @@ const CreateExercise = () => {
             duration: '',
             date: new Date(),
         })
+        window.location = "/"
     }
 
     const handleChange = e => {
@@ -81,11 +81,13 @@ const CreateExercise = () => {
                     <DatePicker
                         selected={theDate}
                         onChange={date => handleDate(date)}
+                        onSelect={date => handleDate(date)}
                         dateFormat="dd/MM/yyyy"
                         name="date"
                         
                     />
                 </div>
+                <button onClick={handleSubmit}>Submit</button>
             </form>
         </div>
     )
