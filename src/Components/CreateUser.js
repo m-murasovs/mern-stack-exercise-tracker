@@ -19,11 +19,13 @@ const CreateExercise = () => {
         setUser({
             username: ''
         })
+        console.log(user);
+        axios.post('http://localhost:5000/users/add', user)
+            .then(res => console.log(res.data));
     }
 
     const handleChange = e => {
         setUser({...user, [e.target.name]: e.target.value });
-        console.log(user)
     }
 
     return (
