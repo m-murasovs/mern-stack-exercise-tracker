@@ -1,31 +1,30 @@
 import React, { createContext, useState } from 'react';
+import uniqId from 'uniqid';
 
 
 export const ExerciseContext = createContext();
 
 const ExerciseContextProvider = ({ children }) => {
-    const [ exercise, setExercise ] = useState({
-        username: '',
-        description: '',
-        duration: 0,
-        date: new Date(),
-    });
+    const [ exercises, setExercises ] = useState([
+        {
+            id: 1,
+            username: 'Big Bez',
+            description: 'Rowin your wife',
+            duration: 90,
+            date: new Date(),
+        }
+    ]);
 
-    const addUser = (e) => {
-        setExercise([ ...exercise, { ...exercise.username } ]);
+    const addExercise = exercise => {
+        setExercises([...exercises, { ...exercise, id: uniqId() }]);
     }
-    const addDescription = (e) => {
-        setExercise([ ...exercise, { ...exercise.description } ]);
-    }
-    const addDuration = (e) => {
-        setExercise([ ...exercise, { ...exercise.duration } ]);
-    }
-    const addDate = (e) => {
-        setExercise([ ...exercise, { ...exercise.date } ]);
+
+    const deleteExercise = id => {
+        setExercises(exercises.filter(exercise => exercise.id !== id));
     }
 
     return (
-        <ExerciseContext.Provider value={{ exercise, setExercise, addDescription, addDuration, addUser, addDate }} >
+        <ExerciseContext.Provider value={{ exercises, addExercise, deleteExercise }} >
             {children}
         </ExerciseContext.Provider>
     )
