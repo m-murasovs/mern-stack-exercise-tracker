@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 
-const CreateUser = () => {
+const EditExercise = () => {
     return (
         <div>
-            CREATE
+            EDIT
         </div>
     )
 }
 
-export default CreateUser;
+export default EditExercise;

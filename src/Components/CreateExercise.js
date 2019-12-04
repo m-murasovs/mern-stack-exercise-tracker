@@ -3,6 +3,7 @@ import { ExerciseContext } from '../Contexts/ExerciseContext';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import styled from 'styled-components';
+import axios from 'axios';
 
 const CreateExercise = () => {
     const { addExercise } = useContext(ExerciseContext);

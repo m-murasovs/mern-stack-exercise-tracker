@@ -8,6 +8,7 @@ import EditExercise from './Components/EditExercise';
 import CreateExercise from './Components/CreateExercise';
 import CreateUser from './Components/CreateUser';
 import ExerciseContextProvider from './Contexts/ExerciseContext';
+import UserContextProvider from './Components/CreateUser';
 
 const BodyWrap = styled.div`
 padding-top: 80px;
@@ -17,6 +18,7 @@ margin: auto;
 
 const App = () => {
     return (
+        <UserContextProvider>
         <ExerciseContextProvider>
             <Router>
                 <Navbar/>
@@ -30,6 +32,7 @@ const App = () => {
                 </BodyWrap>
             </Router>
         </ExerciseContextProvider>
+        </UserContextProvider>
     );
 }
 
