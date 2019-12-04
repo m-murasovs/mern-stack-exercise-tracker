@@ -4,9 +4,12 @@ import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import styled from 'styled-components';
 import axios from 'axios';
+import { UserContext } from '../Contexts/UserContext';
 
 const CreateExercise = () => {
     const { addExercise } = useContext(ExerciseContext);
+
+    const { users } = useContext(UserContext);
 
     const [ theDate, setTheDate ] = useState(new Date ());
 
@@ -26,13 +29,14 @@ const CreateExercise = () => {
             duration: '',
             date: new Date(),
         })
-        window.location = "/"
+        window.location = "/";
+
+        axios.post('http://localhost:5000/exercises/add', exercise)
+            .then(res => console.log(res.data));
     }
 
     const handleChange = e => {
         setExercise({...exercise, [e.target.name]: e.target.value, date: theDate });
-        //setExercise({...exercise, [exercise.date]: theDate});
-        console.log(exercise)
     }
 
     const handleDate = date => {
@@ -51,7 +55,14 @@ const CreateExercise = () => {
                         className="form-control"
                         name="username"
                         id="username"
-                        value={exercise.username}
+                        // {
+                        //     ...users.map(user => (
+                        //         <option 
+                        //         key={user}
+                        //         value={user}>{user}
+                        //         </option>
+                        //     ))
+                        // }
                     ></select>
                 </div>
                 <div className="form-group">
