@@ -11,6 +11,8 @@ import ExerciseContextProvider from './Contexts/ExerciseContext';
 
 const BodyWrap = styled.div`
 padding-top: 80px;
+width: 70%;
+margin: auto;
 `
 
 const App = () => {
