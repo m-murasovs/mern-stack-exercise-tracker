@@ -1,12 +1,50 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import { ExerciseContext } from '../Contexts/ExerciseContext';
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
 import styled from 'styled-components';
+import axios from 'axios';
+import { UserContext } from '../Contexts/UserContext';
 
-const EditExercise = () => {
+const CreateExercise = () => {
+    const { addUser } = useContext(UserContext);
+
+    const [ user, setUser ] = useState({
+        username: ''
+    })
+
+    const handleSubmit = e => {
+        e.preventDefault();
+        addUser(user)
+        setUser({
+            username: ''
+        })
+    }
+
+    const handleChange = e => {
+        setUser({...user, [e.target.name]: e.target.value });
+        console.log(user)
+    }
+
     return (
         <div>
-            EDIT
+            <h3>Create New User</h3>
+            <form onSubmit={handleSubmit}>
+                <div className="form-group">
+                    <label>Username:</label>
+                    <input
+                        required
+                        type="text"
+                        name="username"
+                        className="form-control"
+                        value={user.username}
+                        onChange={handleChange}
+                    />
+                </div>
+                <button onClick={handleSubmit}>Submit</button>
+            </form>
         </div>
     )
 }
 
-export default EditExercise;
+export default CreateExercise;

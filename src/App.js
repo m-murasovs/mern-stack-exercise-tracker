@@ -8,7 +8,7 @@ import EditExercise from './Components/EditExercise';
 import CreateExercise from './Components/CreateExercise';
 import CreateUser from './Components/CreateUser';
 import ExerciseContextProvider from './Contexts/ExerciseContext';
-import UserContextProvider from './Components/CreateUser';
+import UserContextProvider from './Contexts/UserContext';
 
 const BodyWrap = styled.div`
 padding-top: 80px;
