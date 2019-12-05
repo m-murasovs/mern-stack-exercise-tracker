@@ -15,6 +15,7 @@ const ExerciseContextProvider = ({ children }) => {
                     setExercises(res.data.map(exr => exr));
                 }
             })
+            .catch(err => console.log("Problem retrieving exercises.", err))
     }, []);
 
     const addExercise = exercise => {

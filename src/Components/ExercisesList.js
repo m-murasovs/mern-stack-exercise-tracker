@@ -1,7 +1,8 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-// import { ExerciseContext } from '../Contexts/ExerciseContext';
+import { ExerciseContext } from '../Contexts/ExerciseContext';
 // import { UserContext } from '../Contexts/UserContext';
+import axios from 'axios';
 // import styled from 'styled-components';
 
 const ExercisesList = () => {
@@ -14,7 +15,7 @@ const ExercisesList = () => {
             .then(res => {
                 if (res.data.length > 0) {
                     console.log(res.data)
-                    setExercises(res.data.map(exr => exr));
+                    setExercise(res.data.map(exr => exr));
                 }
             })
             .catch(err => console.log("Problem retrieving exercises.", err))
