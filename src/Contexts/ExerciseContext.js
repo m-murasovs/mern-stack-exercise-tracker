@@ -11,7 +11,6 @@ const ExerciseContextProvider = ({ children }) => {
         axios.get('http://localhost:5000/exercises')
             .then(res => {
                 if (res.data.length > 0) {
-                    console.log(res.data)
                     setExercises(res.data.map(exr => exr));
                 }
             })
@@ -23,10 +22,11 @@ const ExerciseContextProvider = ({ children }) => {
     }
 
     const deleteExercise = id => {
-        setExercises(exercises.filter(exercise => exercise.id !== id));
+        axios.delete('http://localhost:5000/exercises'+id)
+            .then(res => console.log(res.data))
+            .catch(err => console.log("Problem deleting exercise.", err))
+        setExercises(exercises.filter(exercise => exercise._id !== id));
     }
-
-    console.log(exercises)
 
     return (
         <ExerciseContext.Provider value={{ exercises, addExercise, deleteExercise }} >
