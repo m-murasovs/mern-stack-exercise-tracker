@@ -2,7 +2,7 @@ import React, { useState, useContext } from 'react';
 import { ExerciseContext } from '../Contexts/ExerciseContext';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
-import styled from 'styled-components';
+// import styled from 'styled-components';
 import axios from 'axios';
 import { UserContext } from '../Contexts/UserContext';
 
@@ -29,6 +29,7 @@ const CreateExercise = () => {
             duration: '',
             date: new Date(),
         })
+        
         window.location = "/";
 
         axios.post('http://localhost:5000/exercises/add', exercise)

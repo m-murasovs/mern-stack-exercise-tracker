@@ -1,8 +1,6 @@
 import React, { useState, useContext } from 'react';
-import { ExerciseContext } from '../Contexts/ExerciseContext';
-import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
-import styled from 'styled-components';
+// import styled from 'styled-components';
 import axios from 'axios';
 import { UserContext } from '../Contexts/UserContext';
 

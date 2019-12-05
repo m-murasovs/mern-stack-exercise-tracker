@@ -4,7 +4,7 @@ import { useOnClickOutside } from '../hooks';
 import { Burger, Menu } from './MenuParts';
 import FocusLock from 'react-focus-lock';
 import {theme} from '../theme';
-import { BrowserRouter as Router, Link } from 'react-router-dom';
+import { BrowserRouter as Link } from 'react-router-dom';
 
 
 const BigWrapper = styled.div`
@@ -69,14 +69,14 @@ height: 60px;
 width: 60px;
 `
 
-const blackBrand = {
-    color: 'black',
-    transition: 'color 1.2s ease-in-out'
-}
-const whiteBrand = {
-    color: 'white',
-    transition: 'color 1.2s ease-in-out'
-}
+// const blackBrand = {
+//     color: 'black',
+//     transition: 'color 1.2s ease-in-out'
+// }
+// const whiteBrand = {
+//     color: 'white',
+//     transition: 'color 1.2s ease-in-out'
+// }
 
 
 export const Navbar = () => {
@@ -94,7 +94,7 @@ export const Navbar = () => {
             <NavWrapper>
                 <BrandDiv>
                     <LogoWrapper>
-                    <img src={""}></img>
+                    {/* <img src={""}></img> */}
                     </LogoWrapper>
                     <Link to="/" >
                         Exercise Tracker
