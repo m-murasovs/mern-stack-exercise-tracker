@@ -12,39 +12,49 @@ const Exercise = props => {
             <td>{props.exercise.duration}</td>
             <td>{props.exercise.date.substring(0, 10)}</td>
             <td>
-                <Link to={"/edit/"+props.exercise._id}>edit</Link> | 
-                <a href="#" onClick={() => { props.deleteExercise(props.exercise._id )}}>delete</a> 
+                {/* <Link to={"/edit/"+props.exercise._id}>edit</Link> | 
+                <a href="#" onClick={() => { props.deleteExercise(props.exercise._id)}}>delete</a>  */}
             </td>
         </tr>
     )
 }
 
 const ExercisesList = () => {
-    const { exercises, deleteExercise } = useContext(ExerciseContext);
+    const { deleteExercise } = useContext(ExerciseContext);
 
-    console.log(exercises)
+    const [ exercises, setExercises ] = useState([]);
 
-    const exerciseList = () => {
+    useEffect(() => {
+        axios.get('http://localhost:5000/exercises')
+            .then(res => {
+                if (res.data.length > 0) {
+                    setExercises(res.data.map(exr => exr));
+                }
+            })
+            .catch(err => console.log("Problem retrieving exercises.", err))
+    }, []);
+
+    const ExerciseList = () => {
         return exercises.map(currentexr => {
             return <Exercise exercise={currentexr} deleteExercise={deleteExercise} key={currentexr._id} />
         })
     }
 
-
-    // const { users } = useContext(UserContext);
     return (
         <div>
             <h3>Logged Exercises</h3>
             <table className="table">
                 <thead className="thead-light">
-                    <th>Username</th>
-                    <th>Description</th>
-                    <th>Duration</th>
-                    <th>Date</th>
-                    <th>Actions</th>
+                    <tr>
+                        <th>Username</th>
+                        <th>Description</th>
+                        <th>Duration</th>
+                        <th>Date</th>
+                        <th>Actions</th>
+                    </tr>
                 </thead>
                 <tbody>
-                    {exerciseList}    
+                    <ExerciseList />    
                 </tbody>          
             </table>            
         </div>
