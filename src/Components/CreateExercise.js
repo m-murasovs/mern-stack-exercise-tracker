@@ -48,22 +48,19 @@ const CreateExercise = () => {
             <h3>Create New Exercise Log</h3>
             <form onSubmit={handleSubmit}>
                 <div className="form-group">
-                    <label htmlFor="username">
+                    <label>
                         Username:</label>
-                    <select
+                        <select
                         required
                         className="form-control"
-                        name="username"
-                        id="username"
-                        // {
-                        //     ...users.map(user => (
-                        //         <option 
-                        //         key={user}
-                        //         value={user}>{user}
-                        //         </option>
-                        //     ))
-                        // }
-                    ></select>
+                        name="username">
+                            {users.map(user => (
+                                <option
+                                    key={user}
+                                    value={user}
+                                >{user}</option>
+                            ))}
+                        ></select>
                 </div>
                 <div className="form-group">
                     <label>Description:</label>

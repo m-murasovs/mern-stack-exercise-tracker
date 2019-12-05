@@ -8,17 +8,10 @@ const ExercisesList = () => {
     const { users } = useContext(UserContext);
     return (
         <div>
-            {exercises.map(exr => (
-                <div>
-                    <p>{exr.username}</p>
-                    <p>{exr.description}</p>
-                </div>
-            ))}
-            {users.map(usr => (
-                <div>
-                    <p>{usr.username}</p>
-                </div>
-            ))}
+            THE LIST
+            <br/>
+            <br/>
+            
         </div>
     )
 }
