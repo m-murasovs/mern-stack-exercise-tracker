@@ -21,19 +21,21 @@ const CreateExercise = () => {
     })
 
     const handleSubmit = e => {
-        e.preventDefault();
-        addExercise(exercise)
-        setExercise({
-            username: '',
-            description: '',
-            duration: '',
-            date: new Date(),
-        })
-        
-        window.location = "/";
-
-        axios.post('http://localhost:5000/exercises/add', exercise)
-            .then(res => console.log(res.data));
+        if (exercise.description !== '') {
+            e.preventDefault();
+            setExercise({
+                username: e.target.value,
+                description: e.target.value,
+                duration: e.target.value,
+                date: theDate,
+            })
+            addExercise(exercise);
+            
+            axios.post('http://localhost:5000/exercises/add', exercise)
+                .then(res => console.log(res.data))
+                .catch(err => console.log("Problem submitting task.", err))
+        }
+        // window.location = "/";
     }
 
     const handleChange = e => {
@@ -54,14 +56,16 @@ const CreateExercise = () => {
                         <select
                         required
                         className="form-control"
-                        name="username">
+                        name="username"
+                        onChange={handleChange}
+                        >
                             {users.map(user => (
                                 <option
                                     key={user}
                                     value={user}
                                 >{user}</option>
                             ))}
-                        ></select>
+                        </select>
                 </div>
                 <div className="form-group">
                     <label>Description:</label>

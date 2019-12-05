@@ -10,11 +10,14 @@ const CreateExercise = () => {
     const [ user, setUser ] = useState('');
 
     const handleSubmit = e => {
-        e.preventDefault();
-        setUser(e.target.value);
-        addUser(user);
-        axios.post('http://localhost:5000/users/add', user)
-            .then(res => console.log(res.data));
+        if (user !== '') {
+            e.preventDefault();
+            setUser(e.target.value);
+            addUser(user);
+            axios.post('http://localhost:5000/users/add', user)
+                .then(res => console.log(res.data))
+                .catch(err => console.log("Problem creating user", err))
+        }
     }
 
     const handleChange = e => {

@@ -1,5 +1,4 @@
 import React, { createContext, useState, useEffect } from 'react';
-import uniqId from 'uniqid';
 import axios from 'axios';
 
 
@@ -21,14 +20,12 @@ const UserContextProvider = ({ children }) => {
         setUsers([...users, user.username]);
     }
 
-    const deleteUser = id => {
-        setUsers(users.filter(user => user.id !== id));
-    }
-
-    console.log(users)
+    // const deleteUser = id => {
+    //     setUsers(users.filter(user => user.id !== id));
+    // }
 
     return (
-        <UserContext.Provider value={{ users, addUser, deleteUser }} >
+        <UserContext.Provider value={{ users, addUser }} >
             {children}
         </UserContext.Provider>
     )
