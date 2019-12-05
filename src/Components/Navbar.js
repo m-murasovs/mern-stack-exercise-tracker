@@ -4,7 +4,7 @@ import { useOnClickOutside } from '../hooks';
 import { Burger, Menu } from './MenuParts';
 import FocusLock from 'react-focus-lock';
 import {theme} from '../theme';
-import { BrowserRouter as Link } from 'react-router-dom';
+import { BrowserRouter as Route, Link } from 'react-router-dom';
 
 
 const BigWrapper = styled.div`

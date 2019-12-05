@@ -18,7 +18,7 @@ const UserContextProvider = ({ children }) => {
     }, []);
 
     const addUser = user => {
-        setUsers([...users, { ...user, id: uniqId() }]);
+        setUsers([...users, user.username]);
     }
 
     const deleteUser = id => {

@@ -7,17 +7,12 @@ import { UserContext } from '../Contexts/UserContext';
 const CreateExercise = () => {
     const { addUser } = useContext(UserContext);
 
-    const [ user, setUser ] = useState({
-        username: ''
-    })
+    const [ user, setUser ] = useState('');
 
     const handleSubmit = e => {
         e.preventDefault();
-        addUser(user)
-        setUser({
-            username: ''
-        })
-        console.log(user);
+        setUser(e.target.value);
+        addUser(user);
         axios.post('http://localhost:5000/users/add', user)
             .then(res => console.log(res.data));
     }
@@ -37,7 +32,7 @@ const CreateExercise = () => {
                         type="text"
                         name="username"
                         className="form-control"
-                        value={user.username}
+                        // value={user.username}
                         onChange={handleChange}
                     />
                 </div>
