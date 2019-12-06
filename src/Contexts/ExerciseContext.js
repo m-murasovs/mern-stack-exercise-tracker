@@ -7,7 +7,7 @@ export const ExerciseContext = createContext();
 const ExerciseContextProvider = ({ children }) => {
     const [ exercises, setExercises ] = useState([]);
 
-    useEffect(() => {
+    const getExercises = () => {
         axios.get('http://localhost:5000/exercises')
             .then(res => {
                 if (res.data.length > 0) {
@@ -15,9 +15,13 @@ const ExerciseContextProvider = ({ children }) => {
                 }
             })
             .catch(err => console.log("Problem retrieving exercises.", err))
-    }, []);
+        };
 
     const addExercise = exercise => {
+        axios.post('http://localhost:5000/exercises/add', exercise)
+                .then(res => console.log(res.data))
+                .catch(err => console.log("Problem submitting task.", err))
+
         setExercises([...exercises, exercise ]);
     }
 
@@ -29,7 +33,7 @@ const ExerciseContextProvider = ({ children }) => {
     }
 
     return (
-        <ExerciseContext.Provider value={{ exercises, addExercise, deleteExercise }} >
+        <ExerciseContext.Provider value={{ exercises, addExercise, getExercises, deleteExercise }} >
             {children}
         </ExerciseContext.Provider>
     )

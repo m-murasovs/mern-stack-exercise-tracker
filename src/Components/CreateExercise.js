@@ -3,7 +3,6 @@ import { ExerciseContext } from '../Contexts/ExerciseContext';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 // import styled from 'styled-components';
-import axios from 'axios';
 import { UserContext } from '../Contexts/UserContext';
 
 const CreateExercise = () => {
@@ -29,14 +28,10 @@ const CreateExercise = () => {
                 duration: e.target.value,
                 date: theDate,
             })
+            console.log(e.target.value)
             addExercise(exercise);
-            
-            axios.post('http://localhost:5000/exercises/add', exercise)
-                .then(res => console.log(res.data))
-                .catch(err => console.log("Problem submitting task.", err))
         }
-        console.log(exercise);
-        
+        console.log("Adding exercise:", exercise);
         // window.location = "/";
     }
 
@@ -60,6 +55,7 @@ const CreateExercise = () => {
                         className="form-control"
                         name="username"
                         onChange={handleChange}
+                        // value={users[0]}
                         >
                             {users.map(user => (
                                 <option
