@@ -29,12 +29,16 @@ const EditExercise = props => {
     }, []);
 
     const handleSubmit = (e) => {
-        if (exercises.description !== '') {
+        if (exercises.description !== '' && exercises.duration !== 0) {
             e.preventDefault();
             
             axios.post('http://localhost:5000/exercises/update/' + props.match.params.id, exercises)
                 .then(res => console.log(res.data))
                 .catch(err => console.log("Problem uploading exercise", err))
+
+            setTimeout(() => {window.location = '/'}, 900);
+        } else {
+            alert("Please fill in the entire form");
         }
     }
 
@@ -89,6 +93,7 @@ const EditExercise = props => {
                         value={exercises.duration}
                         onChange={handleChange}
                         placeholder={0}
+                        min={1}
                     />
                 </div>
                 <div className="form-group">
