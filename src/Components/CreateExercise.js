@@ -35,7 +35,9 @@ const CreateExercise = () => {
                 .then(res => console.log(res.data))
                 .catch(err => console.log("Problem submitting task.", err))
         }
-        // window.location = "/";
+        console.log(exercise);
+        
+        window.location = "/";
     }
 
     const handleChange = e => {

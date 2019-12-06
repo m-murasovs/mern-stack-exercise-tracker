@@ -12,31 +12,33 @@ const Exercise = props => {
             <td>{props.exercise.duration}</td>
             <td>{props.exercise.date.substring(0, 10)}</td>
             <td>
-                {/* <Link to={"/edit/"+props.exercise._id}>edit</Link> | 
-                <a href="#" onClick={() => { props.deleteExercise(props.exercise._id)}}>delete</a>  */}
+                <Link to={'/edit/'+props.exercise._id}>edit</Link> | 
+                <a href='#' onClick={() => { props.deleteExercise(props.exercise._id)}}>delete</a> 
             </td>
         </tr>
     )
 }
 
-const ExercisesList = () => {
+const ExercisesList = props => {
     const { deleteExercise } = useContext(ExerciseContext);
 
     const [ exercises, setExercises ] = useState([]);
 
     useEffect(() => {
+        console.log("Retrieving exercises...")
         axios.get('http://localhost:5000/exercises')
             .then(res => {
                 if (res.data.length > 0) {
                     setExercises(res.data.map(exr => exr));
                 }
             })
-            .catch(err => console.log("Problem retrieving exercises.", err))
+            .catch(err => console.log('Problem retrieving exercises.', err));
     }, []);
 
-    const ExerciseList = () => {
-        return exercises.map(currentexr => {
-            return <Exercise exercise={currentexr} deleteExercise={deleteExercise} key={currentexr._id} />
+    const ExerciseList = props => {
+        console.log("Populating table...")
+        return exercises.map(exr => {
+            return <Exercise exercise={exr} deleteExercise={deleteExercise} key={exr._id} />
         })
     }
 
