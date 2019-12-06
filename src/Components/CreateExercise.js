@@ -20,7 +20,8 @@ const CreateExercise = () => {
     })
 
     const handleSubmit = e => {
-        if (exercise.description !== '') {
+        if (exercise.username !== '' || exercise.description !== '' ||
+        exercise.duration !== '') {
             e.preventDefault();
             setExercise({
                 username: e.target.value,
@@ -30,6 +31,8 @@ const CreateExercise = () => {
             })
             addExercise(exercise);
             console.log("Adding exercise:", exercise);
+        } else {
+            alert("Please complete the entire form.")
         }
     }
 
@@ -42,6 +45,9 @@ const CreateExercise = () => {
         setTheDate(date);
     }
 
+    const list = users.map(user => (
+        <option key={ user } value={ user }> {user} </option>
+    ))
     
 
     return (
@@ -57,12 +63,8 @@ const CreateExercise = () => {
                         onChange={handleChange}
                         value={exercise.username}
                         >
-                            {users.map(user => (
-                                <option
-                                    key={user}
-                                    value={user}
-                                >{user}</option>
-                            ))}
+                            <option>Please select user</option>
+                            {list}
                         </select>
                 </div>
                 <div className="form-group">
