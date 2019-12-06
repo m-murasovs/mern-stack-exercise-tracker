@@ -10,8 +10,6 @@ const EditExercise = props => {
 
     const { users } = useContext(UserContext);
 
-    const { updateExercise } = useContext(ExerciseContext);
-
     const [ theDate, setTheDate ] = useState( new Date() );
 
     let [ exercises, setExercises] = useState([{

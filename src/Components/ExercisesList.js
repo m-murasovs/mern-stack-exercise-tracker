@@ -1,7 +1,6 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { ExerciseContext } from '../Contexts/ExerciseContext';
-import axios from 'axios';
 // import styled from 'styled-components';
 
 const Exercise = props => {
@@ -27,19 +26,6 @@ const ExercisesList = props => {
         getExercises();
     }, []);
 
-    // const [ exercises, setExercises ] = useState([]);
-
-    // useEffect(() => {
-    //     console.log("Retrieving exercises...")
-    //     axios.get('http://localhost:5000/exercises')
-    //         .then(res => {
-    //             if (res.data.length > 0) {
-    //                 setExercises(res.data.map(exr => exr));
-    //             }
-    //         })
-    //         .catch(err => console.log('Problem retrieving exercises.', err));
-    // }, []);
-
     const ExerciseList = () => {
         return exercises.map(exr => {
             return <Exercise exercise={exr} deleteExercise={deleteExercise} key={exr._id} />
@@ -48,6 +34,7 @@ const ExercisesList = props => {
 
     return (
         <div>
+        {getExercises}
             <h3>Logged Exercises</h3>
             <table className="table">
                 <thead className="thead-light">
