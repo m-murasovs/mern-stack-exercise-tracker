@@ -34,7 +34,6 @@ const ExercisesList = props => {
 
     return (
         <div>
-        {getExercises}
             <h3>Logged Exercises</h3>
             <table className="table">
                 <thead className="thead-light">

@@ -38,7 +38,6 @@ const CreateExercise = () => {
 
     const handleChange = e => {
         setExercise({...exercise, [e.target.name]: e.target.value, date: theDate });
-        console.log(exercise)
     }
 
     const handleDate = date => {
