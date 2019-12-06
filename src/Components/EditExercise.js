@@ -8,18 +8,21 @@ import axios from 'axios';
 
 const EditExercise = props => {
 
-    let [ exercises, setExercises] = useState([]);
+    let [ exercises, setExercises] = useState([{
+        username: '',
+        description: '',
+        duration: 0,
+        date: ''
+    }]);
     
     let [ users, setUsers ] = useState([]);
     
     useEffect(() => {
+        console.log("Retrieving exercise")
         axios.get('http://localhost:5000/exercises/'+props.match.params.id)
             .then(res => {
-                console.log(res.data);
-                if (res.data.length > 0) {
-                    setExercises(res.data);
-                    console.log(exercises);
-                }
+                console.log("Retrieved exercise: ", res.data);
+                setExercises(res.data)
             })
             .catch(err => console.log('Problem retrieving exercise: ' + props.match.params.id, err));
 
@@ -30,11 +33,10 @@ const EditExercise = props => {
                 }
             })
             .catch(err => {
-                console.log(err);
+                console.log("Problem retrieving users.", err);
         })
     }, []);
 
-    console.log(exercises);
 
     return (
         <div>
