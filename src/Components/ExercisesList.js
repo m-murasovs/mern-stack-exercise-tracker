@@ -13,30 +13,34 @@ const Exercise = props => {
             <td>{props.exercise.date.substring(0, 10)}</td>
             <td>
                 <Link to={'/edit/'+props.exercise._id}>edit</Link> | 
-                <a href='#' onClick={() => { props.deleteExercise(props.exercise._id)}}>delete</a> 
+                <a href='#' onClick={() => { props.deleteExercise(props.exercise._id)}}> delete</a> 
             </td>
         </tr>
     )
 }
 
 const ExercisesList = props => {
-    const { deleteExercise } = useContext(ExerciseContext);
-
-    const [ exercises, setExercises ] = useState([]);
+    
+    const { exercises, deleteExercise, getExercises } = useContext(ExerciseContext);
 
     useEffect(() => {
-        console.log("Retrieving exercises...")
-        axios.get('http://localhost:5000/exercises')
-            .then(res => {
-                if (res.data.length > 0) {
-                    setExercises(res.data.map(exr => exr));
-                }
-            })
-            .catch(err => console.log('Problem retrieving exercises.', err));
+        getExercises();
     }, []);
 
-    const ExerciseList = props => {
-        console.log("Populating table...")
+    // const [ exercises, setExercises ] = useState([]);
+
+    // useEffect(() => {
+    //     console.log("Retrieving exercises...")
+    //     axios.get('http://localhost:5000/exercises')
+    //         .then(res => {
+    //             if (res.data.length > 0) {
+    //                 setExercises(res.data.map(exr => exr));
+    //             }
+    //         })
+    //         .catch(err => console.log('Problem retrieving exercises.', err));
+    // }, []);
+
+    const ExerciseList = () => {
         return exercises.map(exr => {
             return <Exercise exercise={exr} deleteExercise={deleteExercise} key={exr._id} />
         })

@@ -1,4 +1,4 @@
-import React, { createContext, useState, useEffect } from 'react';
+import React, { createContext, useState } from 'react';
 import axios from 'axios';
 
 
@@ -21,8 +21,6 @@ const ExerciseContextProvider = ({ children }) => {
         axios.post('http://localhost:5000/exercises/add', exercise)
                 .then(res => console.log(res.data))
                 .catch(err => console.log("Problem submitting task.", err))
-
-        setExercises([...exercises, exercise ]);
     }
 
     const deleteExercise = id => {

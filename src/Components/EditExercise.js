@@ -1,10 +1,16 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 // import styled from 'styled-components';
 import axios from 'axios';
+import { UserContext } from '../Contexts/UserContext';
+import { ExerciseContext } from '../Contexts/ExerciseContext';
 
 const EditExercise = props => {
+
+    const { users } = useContext(UserContext);
+
+    const { updateExercise } = useContext(ExerciseContext);
 
     const [ theDate, setTheDate ] = useState( new Date() );
 
@@ -15,8 +21,6 @@ const EditExercise = props => {
         date: '',
     }]);
     
-    let [ users, setUsers ] = useState([]);
-    
     useEffect(() => {
         console.log("Retrieving exercise")
         axios.get('http://localhost:5000/exercises/'+props.match.params.id)
@@ -25,16 +29,6 @@ const EditExercise = props => {
                 setExercises(res.data)
             })
             .catch(err => console.log('Problem retrieving exercise: ' + props.match.params.id, err));
-
-        axios.get('http://localhost:5000/users/')
-            .then(res => {
-                if (res.data.length > 0) {
-                setUsers(res.data.map(user => user.username))
-                }
-            })
-            .catch(err => {
-                console.log("Problem retrieving users.", err);
-        })
     }, []);
 
     const handleSubmit = (e) => {

@@ -1,22 +1,21 @@
 import React, { useState, useContext } from 'react';
 import 'react-datepicker/dist/react-datepicker.css';
 // import styled from 'styled-components';
-import axios from 'axios';
 import { UserContext } from '../Contexts/UserContext';
 
 const CreateExercise = () => {
     const { addUser } = useContext(UserContext);
 
-    const [ user, setUser ] = useState('');
+    const [ user, setUser ] = useState({
+        username: ''
+    });
 
     const handleSubmit = e => {
         if (user !== '') {
             e.preventDefault();
             setUser(e.target.value);
             addUser(user);
-            axios.post('http://localhost:5000/users/add', user)
-                .then(res => console.log(res.data))
-                .catch(err => console.log("Problem creating user", err))
+            setUser({username: ''});
         }
     }
 
@@ -35,8 +34,8 @@ const CreateExercise = () => {
                         type="text"
                         name="username"
                         className="form-control"
-                        // value={user.username}
                         onChange={handleChange}
+                        value={user.username}
                     />
                 </div>
                 <button onClick={handleSubmit}>Submit</button>

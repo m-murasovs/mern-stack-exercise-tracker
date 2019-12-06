@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { ExerciseContext } from '../Contexts/ExerciseContext';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
@@ -28,34 +28,34 @@ const CreateExercise = () => {
                 duration: e.target.value,
                 date: theDate,
             })
-            console.log(e.target.value)
             addExercise(exercise);
+            console.log("Adding exercise:", exercise);
         }
-        console.log("Adding exercise:", exercise);
-        // window.location = "/";
     }
 
     const handleChange = e => {
         setExercise({...exercise, [e.target.name]: e.target.value, date: theDate });
+        console.log(exercise)
     }
 
     const handleDate = date => {
         setTheDate(date);
     }
 
+    
+
     return (
         <div>
             <h3>Create New Exercise Log</h3>
             <form onSubmit={handleSubmit}>
                 <div className="form-group">
-                    <label>
-                        Username:</label>
+                    <label>Username:</label>
                         <select
                         required
                         className="form-control"
                         name="username"
                         onChange={handleChange}
-                        // value={users[0]}
+                        value={exercise.username}
                         >
                             {users.map(user => (
                                 <option
