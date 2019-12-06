@@ -22,7 +22,7 @@ const ExerciseContextProvider = ({ children }) => {
     }
 
     const deleteExercise = id => {
-        axios.delete('http://localhost:5000/exercises'+id)
+        axios.delete('http://localhost:5000/exercises/'+id)
             .then(res => console.log(res.data))
             .catch(err => console.log("Problem deleting exercise.", err))
         setExercises(exercises.filter(exercise => exercise._id !== id));

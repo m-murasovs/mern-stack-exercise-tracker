@@ -37,7 +37,7 @@ const CreateExercise = () => {
         }
         console.log(exercise);
         
-        window.location = "/";
+        // window.location = "/";
     }
 
     const handleChange = e => {

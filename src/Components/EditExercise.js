@@ -40,12 +40,6 @@ const EditExercise = props => {
     const handleSubmit = (e) => {
         if (exercises.description !== '') {
             e.preventDefault();
-            setExercises({
-                username: e.target.value,
-                description: e.target.value,
-                duration: e.target.value,
-                date: theDate,
-            })
             
             axios.post('http://localhost:5000/exercises/update/' + props.match.params.id, exercises)
                 .then(res => console.log(res.data))
@@ -124,45 +118,3 @@ const EditExercise = props => {
 }
 
 export default EditExercise;
-
-
-// const { addExercise } = useContext(ExerciseContext);
-
-//     const { users } = useContext(UserContext);
-
-//     let [ users2, setUsers2 ] = useState('');
-
-//     const [ theDate, setTheDate ] = useState(new Date ());
-
-//     const [ exercise, setExercise ] = useState({
-//         username: '',
-//         description: '',
-//         duration: '',
-//         date: '',
-//     })
-
-    // const handleSubmit = e => {
-    //     if (exercise.description !== '') {
-    //         e.preventDefault();
-    //         setExercise({
-    //             username: e.target.value,
-    //             description: e.target.value,
-    //             duration: e.target.value,
-    //             date: theDate,
-    //         })
-    //         addExercise(exercise);
-            
-//             axios.post('http://localhost:5000/exercises/update/'+props.match.params.id, exercise)
-//                 .then(res => console.log(res.data))
-//                 .catch(err => console.log("Problem submitting task.", err))
-//         }
-//         window.location = "/";
-//     }
-
-//     const handleChange = e => {
-//         setExercise({...exercise, [e.target.name]: e.target.value, date: theDate });
-//     }
-
-//     const handleDate = date => {
-//         setTheDate(date);
-//     }
