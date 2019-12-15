@@ -20,7 +20,7 @@ const EditExercise = props => {
     
     useEffect(() => {
         console.log("Retrieving exercise")
-        axios.get('http://localhost:5000/exercises/'+props.match.params.id)
+        axios.get('http://localhost:5000/exercises/' + props.match.params.id)
             .then(res => {
                 console.log("Retrieved exercise: ", res.data);
                 setExercises(res.data)

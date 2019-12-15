@@ -9,6 +9,7 @@ import CreateExercise from './Components/CreateExercise';
 import CreateUser from './Components/CreateUser';
 import ExerciseContextProvider from './Contexts/ExerciseContext';
 import UserContextProvider from './Contexts/UserContext';
+import GlobalStyles from './Global';
 
 const BodyWrap = styled.div`
 padding-top: 80px;
@@ -20,6 +21,7 @@ const App = () => {
     return (
         <UserContextProvider>
         <ExerciseContextProvider>
+            <GlobalStyles />
             <Router>
                 <Navbar/>
                 <BodyWrap>

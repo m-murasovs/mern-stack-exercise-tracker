@@ -10,21 +10,22 @@ import { BrowserRouter as Route, Link } from 'react-router-dom';
 const BigWrapper = styled.div`
 width: 100%;
 position: fixed;
-background: lightgrey;
+background: ${({ theme }) => theme.primaryDark};
 z-index: 100;
-color: black;
+height: 8%;
 `
 
 const NavWrapper = styled.div`
 display: grid;
 grid-template-columns: auto auto;
 justify-content: stretch;
+height: 100%;
 `
 
 const BrandDiv = styled.div`
 display: grid;
 grid-template-columns: auto auto;
-padding-left: 5%;
+padding-left: 10%;
 justify-content: left;
 align-items: center;
 transition: 0.8s;
@@ -64,11 +65,6 @@ transition: 0.8s;
 }
 `
 
-const LogoWrapper =styled.div`
-height: 60px; 
-width: 60px;
-`
-
 // const blackBrand = {
 //     color: 'black',
 //     transition: 'color 1.2s ease-in-out'
@@ -93,11 +89,8 @@ export const Navbar = () => {
         <BigWrapper>
             <NavWrapper>
                 <BrandDiv>
-                    <LogoWrapper>
-                    {/* <img src={""}></img> */}
-                    </LogoWrapper>
                     <Link to="/" >
-                        Exercise Tracker
+                        <h1>Exercise Tracker</h1>
                     </Link>
                 </BrandDiv>
 
