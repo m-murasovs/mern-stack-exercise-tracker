@@ -65,18 +65,7 @@ transition: 0.8s;
 }
 `
 
-// const blackBrand = {
-//     color: 'black',
-//     transition: 'color 1.2s ease-in-out'
-// }
-// const whiteBrand = {
-//     color: 'white',
-//     transition: 'color 1.2s ease-in-out'
-// }
-
-
 export const Navbar = () => {
-    // let [ slidePos ] = useContext(PositionContext);
 
     const [open, setOpen] = useState(false);
     const node = useRef();

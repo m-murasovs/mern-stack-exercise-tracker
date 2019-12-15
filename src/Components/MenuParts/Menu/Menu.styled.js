@@ -1,17 +1,13 @@
 import styled from 'styled-components';
 
 export const StyledMenu = styled.nav`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
   background: ${({ theme }) => theme.primaryDark};
   color: white;
-  transform: ${({ open }) => open ? 'translateX(0)' : 'translateX(-100%)'};
-  height: 95vh;
+  transform: ${({ open }) => open ? 'translateY(7%)' : 'translateY(-140%)'};
   text-align: left;
   padding: 2rem;
   position: absolute;
-  top: 90px;
+  /* margin-top: 4%; */
   left: 0;
   transition: transform 0.3s ease-in-out;
 
