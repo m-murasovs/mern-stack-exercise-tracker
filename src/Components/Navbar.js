@@ -4,28 +4,31 @@ import { useOnClickOutside } from '../hooks';
 import { Burger, Menu } from './MenuParts';
 import FocusLock from 'react-focus-lock';
 import {theme} from '../theme';
-import { BrowserRouter as Route, Link } from 'react-router-dom';
+import { BrowserRouter as Route, NavLink } from 'react-router-dom';
 
 
 const BigWrapper = styled.div`
+display: grid;
+grid-template-columns: auto auto;
+justify-content: stretch;
 width: 100%;
 position: fixed;
 background: ${({ theme }) => theme.primaryDark};
 z-index: 100;
-height: 12%;
-`
-
-const NavWrapper = styled.div`
-display: grid;
-grid-template-columns: auto auto;
-justify-content: stretch;
-height: 100%;
+height: 6em;
+@media (max-width: ${({ theme }) => theme.tablet}) {
+        height: 8em;
+    }
+@media (max-width: ${({ theme }) => theme.mobile}) {
+        padding-top: 2vw;
+        height: 14vw;
+    }
 `
 
 const BrandDiv = styled.div`
 display: grid;
 grid-template-columns: auto auto;
-padding-left: 10%;
+padding-left: 8%;
 height: 100%;
 justify-content: left;
 align-items: center;
@@ -44,7 +47,7 @@ justify-content: right;
 align-items: center;
 text-decoration: none;
 transition: 0.8s;
-@media (min-width: 450px) {
+@media (min-width: ${({ theme }) => theme.mobile}) {
     display: grid;
     grid-template-columns: auto auto auto;
     grid-gap: 5%;
@@ -60,7 +63,7 @@ padding-right: 15%;
 justify-content: right;
 align-items: center;
 transition: 0.8s;
-@media (max-width: 450px) {
+@media (max-width: ${({ theme }) => theme.mobile}) {
     display: grid;
 }
 &:hover {
@@ -68,20 +71,26 @@ transition: 0.8s;
 }
 `
 
-const linkStyle = {
-    textDecoration: "none",
-    color: "white",
-    fontFamily: "Helvetica, sans-serif",
-    fontSize: "1.5vw"
-}
+const Brand = styled.h1`
+text-decoration: none;
+color: #F2F2F2;
+font-family: "Racing Sans One", sans-serif;
+font-size: 4em;
+@media (max-width: ${({ theme }) => theme.tablet}) {
+    font-size: 6vw;
+    }
+@media (max-width: ${({ theme }) => theme.mobile}) {
+    font-size: 8vw;
+    }
+`
 
-const headStyle = {
-    boxSizing: "border-box",
-    fontFamily: "Racing Sans One, cursive",
-    textDecoration: "none",
-    color: "white",
-    fontSize: "4vw"
-}
+const NavLinks = styled.span`
+text-decoration: none;
+color: #F2F2F2;
+font-family: "Roboto", sans-serif;
+font-size: 2em;
+`
+
 
 export const Navbar = () => {
 
@@ -94,17 +103,16 @@ export const Navbar = () => {
     return (
         <ThemeProvider theme={theme}>
         <BigWrapper>
-            <NavWrapper>
                 <BrandDiv>
-                    <Link to="/" style={headStyle}>
-                        Exercise Tracker
-                    </Link>
+                    <NavLink to="/" >
+                        <Brand>EXERCISE TRACKER</Brand>
+                    </NavLink>
                 </BrandDiv>
 
                 <DesktopMenuDiv>
-                    <Link to='/' style={linkStyle}>Exercises</Link>
-                    <Link to='/create' style={linkStyle}>Create Exercise Log</Link>
-                    <Link to='/user' style={linkStyle}>Create User</Link>
+                    <NavLink to='/'><NavLinks>Exercises</NavLinks></NavLink>
+                    <NavLink to='/create'><NavLinks>Create Exercise Log</NavLinks></NavLink>
+                    <NavLink to='/user'><NavLinks>Create User</NavLinks></NavLink>
                 </DesktopMenuDiv>
 
                 <MobileMenuDiv>
@@ -113,7 +121,6 @@ export const Navbar = () => {
                         <Menu open={open} setOpen={setOpen} id={menuId} />
                     </FocusLock>
                 </MobileMenuDiv>
-            </NavWrapper>
         </BigWrapper>
         </ThemeProvider>
     )

@@ -1,6 +1,7 @@
 export const theme = {
-  primaryDark: 'rgb(50, 50, 50)',
-  primaryLight: '#EFFFFA',
-  primaryHover: '#343078',
-  mobile: '576px',
+  primaryDark: '#23627A',
+  primaryLight: '##F2F2F2',
+  primaryHover: '#62FBFF',
+  mobile: '450px',
+  tablet: '768px'
 }

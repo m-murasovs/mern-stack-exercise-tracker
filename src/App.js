@@ -12,9 +12,12 @@ import UserContextProvider from './Contexts/UserContext';
 import GlobalStyles from './Global';
 
 const BodyWrap = styled.div`
-padding-top: 12%;
+padding-top: 200px;
 width: 70%;
 margin: auto;
+@media (max-width: ${({ theme }) => theme.mobile}) {
+        
+    }
 `
 
 const App = () => {
