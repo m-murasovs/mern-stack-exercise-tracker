@@ -3,16 +3,15 @@ import styled from 'styled-components';
 export const StyledMenu = styled.nav`
   background: ${({ theme }) => theme.primaryDark};
   color: white;
-  transform: ${({ open }) => open ? 'translateY(7%)' : 'translateY(-140%)'};
+  transform: ${({ open }) => open ? 'translateY(6%)' : 'translateY(-140%)'};
   text-align: left;
-  padding: 2rem;
   position: absolute;
-  /* margin-top: 4%; */
   left: 0;
   transition: transform 0.3s ease-in-out;
 
   @media (max-width: ${({ theme }) => theme.mobile}) {
       width: 100%;
+      transform: ${({ open }) => open ? 'translateY(4%)' : 'translateY(-140%)'};
     }
 
   a {

@@ -7,6 +7,7 @@ import styled from 'styled-components';
 const LinksCont = styled.div`
 display: grid;
 grid-template-rows: auto auto auto;
+padding-bottom: 10%;
 `
 
 const Menu = ({ open, ...props }) => {

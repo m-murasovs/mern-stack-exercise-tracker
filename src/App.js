@@ -12,7 +12,7 @@ import UserContextProvider from './Contexts/UserContext';
 import GlobalStyles from './Global';
 
 const BodyWrap = styled.div`
-padding-top: 80px;
+padding-top: 12%;
 width: 70%;
 margin: auto;
 `

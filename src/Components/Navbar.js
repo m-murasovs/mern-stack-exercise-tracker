@@ -12,7 +12,7 @@ width: 100%;
 position: fixed;
 background: ${({ theme }) => theme.primaryDark};
 z-index: 100;
-height: 8%;
+height: 12%;
 `
 
 const NavWrapper = styled.div`
@@ -26,6 +26,7 @@ const BrandDiv = styled.div`
 display: grid;
 grid-template-columns: auto auto;
 padding-left: 10%;
+height: 100%;
 justify-content: left;
 align-items: center;
 transition: 0.8s;
@@ -37,9 +38,11 @@ transition: 0.8s;
 
 const DesktopMenuDiv = styled.div`
 display: none;
+height: 100%;
 padding-right: 15%;
 justify-content: right;
 align-items: center;
+text-decoration: none;
 transition: 0.8s;
 @media (min-width: 450px) {
     display: grid;
@@ -65,6 +68,21 @@ transition: 0.8s;
 }
 `
 
+const linkStyle = {
+    textDecoration: "none",
+    color: "white",
+    fontFamily: "Helvetica, sans-serif",
+    fontSize: "1.5vw"
+}
+
+const headStyle = {
+    boxSizing: "border-box",
+    fontFamily: "Racing Sans One, cursive",
+    textDecoration: "none",
+    color: "white",
+    fontSize: "4vw"
+}
+
 export const Navbar = () => {
 
     const [open, setOpen] = useState(false);
@@ -78,15 +96,15 @@ export const Navbar = () => {
         <BigWrapper>
             <NavWrapper>
                 <BrandDiv>
-                    <Link to="/" >
-                        <h1>Exercise Tracker</h1>
+                    <Link to="/" style={headStyle}>
+                        Exercise Tracker
                     </Link>
                 </BrandDiv>
 
                 <DesktopMenuDiv>
-                    <li><Link to='/'>Exercises</Link></li>
-                    <li><Link to='/create'>Create Exercise Log</Link></li>
-                    <li><Link to='/user'>Create User</Link></li>
+                    <Link to='/' style={linkStyle}>Exercises</Link>
+                    <Link to='/create' style={linkStyle}>Create Exercise Log</Link>
+                    <Link to='/user' style={linkStyle}>Create User</Link>
                 </DesktopMenuDiv>
 
                 <MobileMenuDiv>
