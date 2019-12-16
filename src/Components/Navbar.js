@@ -15,14 +15,15 @@ width: 100%;
 position: fixed;
 background: ${({ theme }) => theme.primaryDark};
 z-index: 100;
-height: 8vw;
+height: 10vw;
+padding-top: 1vw;
 @media (max-width: ${({ theme }) => theme.tablet}) {
-        height: 10vw;
-    }
+    height: 12vw;
+}
 @media (max-width: ${({ theme }) => theme.mobile}) {
-        padding-top: 2vw;
-        height: 14vw;
-    }
+    padding-top: 2vw;
+    height: 16vw;
+}
 `
 
 const BrandDiv = styled.div`
@@ -73,7 +74,7 @@ transition: 0.8s;
 
 const Brand = styled.h1`
 text-decoration: none;
-color: #F2F2F2;
+color: #FFF;
 font-family: "Racing Sans One", sans-serif;
 font-size: 4em;
 @media (max-width: ${({ theme }) => theme.tablet}) {
@@ -86,9 +87,10 @@ font-size: 4em;
 
 const NavLinks = styled.span`
 text-decoration: none;
-color: #F2F2F2;
+color: #FFF;
 font-family: "Roboto", sans-serif;
 font-size: 1.9vw;
+padding-top: 2vw;
 `
 
 
