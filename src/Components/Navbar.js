@@ -15,7 +15,7 @@ width: 100%;
 position: fixed;
 background: ${({ theme }) => theme.primaryDark};
 z-index: 100;
-height: 6em;
+height: 8vw;
 @media (max-width: ${({ theme }) => theme.tablet}) {
         height: 10vw;
     }
@@ -88,7 +88,7 @@ const NavLinks = styled.span`
 text-decoration: none;
 color: #F2F2F2;
 font-family: "Roboto", sans-serif;
-font-size: 2em;
+font-size: 1.9vw;
 `
 
 
@@ -111,7 +111,7 @@ export const Navbar = () => {
 
                 <DesktopMenuDiv>
                     <NavLink to='/'><NavLinks>Exercises</NavLinks></NavLink>
-                    <NavLink to='/create'><NavLinks>Create Exercise Log</NavLinks></NavLink>
+                    <NavLink to='/create'><NavLinks>Record Exercise</NavLinks></NavLink>
                     <NavLink to='/user'><NavLinks>Create User</NavLinks></NavLink>
                 </DesktopMenuDiv>
 
