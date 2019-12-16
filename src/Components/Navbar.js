@@ -112,9 +112,9 @@ export const Navbar = () => {
                 </BrandDiv>
 
                 <DesktopMenuDiv>
-                    <NavLink to='/'><NavLinks>Exercises</NavLinks></NavLink>
-                    <NavLink to='/create'><NavLinks>Record Exercise</NavLinks></NavLink>
-                    <NavLink to='/user'><NavLinks>Create User</NavLinks></NavLink>
+                    <NavLink to='/' activeClassName="active"><NavLinks>Exercises</NavLinks></NavLink>
+                    <NavLink to='/create' activeClassName="active"><NavLinks>Record Exercise</NavLinks></NavLink>
+                    <NavLink to='/user' activeClassName="active"><NavLinks>Create User</NavLinks></NavLink>
                 </DesktopMenuDiv>
 
                 <MobileMenuDiv>

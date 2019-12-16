@@ -4,8 +4,8 @@ export const StyledBurger = styled.button`
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  width: 2rem;
-  height: 2rem;
+  width: 3em;
+  height: 3em;
   background: transparent;
   border: none;
   cursor: pointer;
@@ -13,14 +13,15 @@ export const StyledBurger = styled.button`
   z-index: 10;
 
   span {
-    width: 2rem;
-    height: 0.25rem;
+    width: 3em;
+    height: 0.3rem;
     background: ${({ open }) => open ? "white" : "white"};
     border-radius: 10px;
-    transition: all 0.3s linear;
+    transition: all 0.2s ease-in-out;
     position: relative;
     transform-origin: 1px;
-    z-index: 10000000;
+    z-index: 10000;
+    padding-right: 10%;
 
     :first-child {
       transform: ${({ open }) => open ? 'rotate(45deg)' : 'rotate(0)'};
@@ -28,7 +29,7 @@ export const StyledBurger = styled.button`
 
     :nth-child(2) {
       opacity: ${({ open }) => open ? '0' : '1'};
-      transform: ${({ open }) => open ? 'translateX(20px)' : 'translateX(0)'};
+      transform: ${({ open }) => open ? 'opacity(1)' : 'opacity(0)'};
     }
 
     :nth-child(3) {
