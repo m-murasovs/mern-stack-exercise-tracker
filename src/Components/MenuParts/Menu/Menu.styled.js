@@ -2,16 +2,18 @@ import styled from 'styled-components';
 
 export const StyledMenu = styled.nav`
   background: ${({ theme }) => theme.primaryDark};
-  color: white;
-  transform: ${({ open }) => open ? 'translateY(6%)' : 'translateY(-140%)'};
-  text-align: left;
+  color: ${({ theme }) => theme.primaryLight};
+  transform: ${({ open }) => open ? 'translateX(0%)' : 'translateX(200%)'};
+  text-align: center;
   position: absolute;
-  left: 0;
+  right: 0;
   transition: transform 0.3s ease-in-out;
+  width: 50%;
+  border-radius: 4px;
 
   @media (max-width: ${({ theme }) => theme.mobile}) {
       width: 100%;
-      transform: ${({ open }) => open ? 'translateY(4%)' : 'translateY(-140%)'};
+      transform: ${({ open }) => open ? 'translateX(0%)' : 'translateX(200%)'};
     }
 
   a {

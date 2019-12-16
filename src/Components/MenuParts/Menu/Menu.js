@@ -10,17 +10,17 @@ grid-template-rows: auto auto auto;
 padding-bottom: 10%;
 `
 
-const Menu = ({ open, ...props }) => {
+const Menu = ({ open, setOpen, ...props }) => {
   
   const isHidden = open ? true : false;
-  const tabIndex = isHidden ? 0 : -1;
+//   const tabIndex = isHidden ? 0 : -1;
 
   return (
     <StyledMenu open={open} aria-hidden={!isHidden} {...props}>
         <LinksCont>
-            <Link to='/'>Exercises</Link>
-            <Link to='/create'>Create Exercise Log</Link>
-            <Link to='/user'>Create User</Link>
+            <Link to='/' onClick={() => setOpen(!open)}>Exercises</Link>
+            <Link to='/create' onClick={() => setOpen(!open)}>Record Exercise</Link>
+            <Link to='/user' onClick={() => setOpen(!open)}>Create User</Link>
         </LinksCont>
     </StyledMenu>
   )
