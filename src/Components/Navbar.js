@@ -17,7 +17,7 @@ background: ${({ theme }) => theme.primaryDark};
 z-index: 100;
 height: 6em;
 @media (max-width: ${({ theme }) => theme.tablet}) {
-        height: 8em;
+        height: 10vw;
     }
 @media (max-width: ${({ theme }) => theme.mobile}) {
         padding-top: 2vw;
@@ -40,17 +40,17 @@ transition: 0.8s;
 `
 
 const DesktopMenuDiv = styled.div`
-display: none;
+display: grid;
+grid-template-columns: auto auto auto;
+grid-gap: 5%;
 height: 100%;
 padding-right: 15%;
 justify-content: right;
 align-items: center;
 text-decoration: none;
 transition: 0.8s;
-@media (min-width: ${({ theme }) => theme.mobile}) {
-    display: grid;
-    grid-template-columns: auto auto auto;
-    grid-gap: 5%;
+@media (max-width: ${({ theme }) => theme.tablet}) {
+    display: none;
 }
 &:hover {
     cursor: pointer;
@@ -63,7 +63,7 @@ padding-right: 15%;
 justify-content: right;
 align-items: center;
 transition: 0.8s;
-@media (max-width: ${({ theme }) => theme.mobile}) {
+@media (max-width: ${({ theme }) => theme.tablet}) {
     display: grid;
 }
 &:hover {
@@ -77,7 +77,7 @@ color: #F2F2F2;
 font-family: "Racing Sans One", sans-serif;
 font-size: 4em;
 @media (max-width: ${({ theme }) => theme.tablet}) {
-    font-size: 6vw;
+    font-size: 5vw;
     }
 @media (max-width: ${({ theme }) => theme.mobile}) {
     font-size: 8vw;
