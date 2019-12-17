@@ -74,7 +74,7 @@ transition: 0.8s;
 
 const Brand = styled.h1`
 text-decoration: none;
-color: #FFF;
+color: #FAFAFA;
 font-family: "Racing Sans One", sans-serif;
 font-size: 4em;
 @media (max-width: ${({ theme }) => theme.tablet}) {
@@ -87,7 +87,7 @@ font-size: 4em;
 
 const NavLinks = styled.span`
 text-decoration: none;
-color: #FFF;
+color: #FAFAFA;
 font-family: "Roboto", sans-serif;
 font-size: 1.9vw;
 padding-top: 2vw;

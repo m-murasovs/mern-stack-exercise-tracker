@@ -1,10 +1,10 @@
 import styled from 'styled-components';
+import { animated } from 'react-spring';
 
-export const StyledMenu = styled.nav`
+export const StyledMenu = styled(animated.nav)`
   background: ${({ theme }) => theme.primaryDark};
   color: ${({ theme }) => theme.primaryLight};
   transform: ${({ open }) => open ? 'translateY(0%)' : 'translateY(-200%)'};
-  opacity: ${({ open }) => open ? '1' : '0'};
   text-align: right;
   padding: 3em 3em;
   position: absolute;
