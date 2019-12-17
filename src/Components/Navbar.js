@@ -10,11 +10,11 @@ const BigWrapper = styled.div`
 display: grid;
 grid-template-columns: auto auto;
 justify-content: stretch;
-width: 100%;
 position: fixed;
+width: 100%;
+height: 10vw;
 background: ${({ theme }) => theme.primaryDark};
 z-index: 100;
-height: 10vw;
 padding-top: 1vw;
 transition: top 300ms cubic-bezier(0.17, 0.04, 0.03, 0.94) 0s;
 animation: 1s ease-out 0s;
@@ -32,7 +32,6 @@ const BrandDiv = styled.div`
 display: grid;
 grid-template-columns: auto auto;
 padding-left: 8%;
-height: 100%;
 justify-content: left;
 align-items: center;
 transition: 0.8s;
@@ -53,7 +52,7 @@ transition: 0.8s;
 }
 `
 
-const Brand = styled.h1`
+const Brand = styled.span`
 color: #FAFAFA;
 font-family: "Oxygen", sans-serif;
 font-style: italic;
