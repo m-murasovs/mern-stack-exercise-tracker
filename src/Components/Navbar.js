@@ -79,9 +79,10 @@ text-decoration: none;
 color: #FAFAFA;
 font-family: "Oxygen", sans-serif;
 font-style: italic;
-font-size: 4em;
+font-size: 3.5vw;
 @media (max-width: ${({ theme }) => theme.tablet}) {
-    font-size: 5vw;
+    padding-top: 1vw;
+    font-size: 5.5vw;
     }
 @media (max-width: ${({ theme }) => theme.mobile}) {
     padding-top: 2vw;
