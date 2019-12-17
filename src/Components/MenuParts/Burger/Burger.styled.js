@@ -17,7 +17,7 @@ export const StyledBurger = styled.button`
     height: 0.3rem;
     background: ${({ open }) => open ? "white" : "white"};
     border-radius: 10px;
-    transition: all 0.2s ease-in-out;
+    transition: all 0.5s ease-in-out;
     position: relative;
     transform-origin: 1px;
     z-index: 10000;
@@ -33,7 +33,7 @@ export const StyledBurger = styled.button`
     }
 
     :nth-child(3) {
-      transform: ${({ open }) => open ? 'rotate(-45deg)' : 'rotate(0)'};
+      transform: ${({ open }) => open ? 'rotate(-405deg)' : 'rotate(0)'};
     }
   }
 `

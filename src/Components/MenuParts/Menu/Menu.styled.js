@@ -4,18 +4,18 @@ import { animated } from 'react-spring';
 export const StyledMenu = styled(animated.nav)`
   background: ${({ theme }) => theme.primaryDark};
   color: ${({ theme }) => theme.primaryLight};
-  transform: ${({ open }) => open ? 'translateY(0%)' : 'translateY(-200%)'};
+  /* transform: ${({ open }) => open ? 'translateY(0%)' : 'translateY(-200%)'}; */
   text-align: right;
   padding: 3em 3em;
   position: absolute;
   right: 0;
-  transition: transform 0.3s ease-in-out;
+  /* transition: transform 0.6s ease-in-out; */
   width: 40%;
   border-radius: 4px;
 
   @media (max-width: ${({ theme }) => theme.mobile}) {
       width: 100%;
-      transform: ${({ open }) => open ? 'translateY(0%)' : 'translateY(-200%)'};
+      /* transform: ${({ open }) => open ? 'translateY(0%)' : 'translateY(-200%)'}; */
     }
 
   a {
@@ -32,7 +32,7 @@ export const StyledMenu = styled(animated.nav)`
     }
 
     &:hover {
-      color: ${({ theme }) => theme.primaryHover};
+        color: ${({ theme }) => theme.primaryHover};
     }
   }
 `;
