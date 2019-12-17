@@ -2,7 +2,6 @@ import styled from 'styled-components';
 import { animated } from 'react-spring';
 
 export const StyledMenu = styled(animated.nav)`
-/* display: none; */
 background: ${({ theme }) => theme.primaryDark};
 color: ${({ theme }) => theme.primaryLight};
 text-align: right;
@@ -26,7 +25,7 @@ border-radius: 4px;
     transition: color 0.3s linear;
 
     @media (max-width: ${({ theme }) => theme.mobile}) {
-      font-size: 4vw;
+      font-size: 5vw;
       text-align: center;
     }
 

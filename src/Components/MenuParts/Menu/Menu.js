@@ -3,7 +3,7 @@ import { bool } from 'prop-types';
 import { StyledMenu } from './Menu.styled';
 import { BrowserRouter as Route, Link } from 'react-router-dom';
 import styled from 'styled-components';
-import { useSpring, animated } from 'react-spring';
+import { useSpring } from 'react-spring';
 
 
 const LinksCont = styled.div`
@@ -17,7 +17,7 @@ const Menu = ({ open, setOpen, ...props }) => {
 	const { x } = useSpring({
 		from: { x: 1 },
 		x: open ? 0 : 1,
-		config: { mass: 1, tension: 180, friction: 40 }
+		config: { mass: 1, tension: 140, friction: 40 }
     });
     
     const dropStyle = {
@@ -30,7 +30,7 @@ const Menu = ({ open, setOpen, ...props }) => {
     }
   
     const isHidden = open ? true : false;
-    const tabIndex = isHidden ? 0 : -1;
+    // const tabIndex = isHidden ? 0 : -1;
 
     return (
         <StyledMenu open={open} aria-hidden={isHidden} {...props} style={dropStyle}>
