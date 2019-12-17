@@ -6,7 +6,6 @@ import FocusLock from 'react-focus-lock';
 import {theme} from '../theme';
 import { BrowserRouter as Route, NavLink } from 'react-router-dom';
 
-
 const BigWrapper = styled.div`
 display: grid;
 grid-template-columns: auto auto;
@@ -17,6 +16,9 @@ background: ${({ theme }) => theme.primaryDark};
 z-index: 100;
 height: 10vw;
 padding-top: 1vw;
+transition: top 300ms cubic-bezier(0.17, 0.04, 0.03, 0.94) 0s;
+animation: 1s ease-out 0s;
+
 @media (max-width: ${({ theme }) => theme.tablet}) {
     height: 12vw;
 }
@@ -75,26 +77,31 @@ transition: 0.8s;
 const Brand = styled.h1`
 text-decoration: none;
 color: #FAFAFA;
-font-family: "Racing Sans One", sans-serif;
+font-family: "Oxygen", sans-serif;
+font-style: italic;
 font-size: 4em;
 @media (max-width: ${({ theme }) => theme.tablet}) {
     font-size: 5vw;
     }
 @media (max-width: ${({ theme }) => theme.mobile}) {
-    font-size: 8vw;
+    padding-top: 2vw;
+    font-size: 7vw;
     }
 `
 
 const NavLinks = styled.span`
 text-decoration: none;
 color: #FAFAFA;
-font-family: "Roboto", sans-serif;
-font-size: 1.9vw;
+font-family: "Oxygen", sans-serif;
+font-size: 1.7vw;
 padding-top: 2vw;
+@media (max-width: 848px) {
+    font-size: 1.7vw;
+    }
 `
 
 
-export const Navbar = () => {
+export const Navbar = (props) => {
 
     const [open, setOpen] = useState(false);
     const node = useRef();
