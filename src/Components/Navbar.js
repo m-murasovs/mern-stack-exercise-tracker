@@ -4,7 +4,7 @@ import { useOnClickOutside } from '../Contexts/BurgerContext.js';
 import { Burger, Menu } from './MenuParts';
 import FocusLock from 'react-focus-lock';
 import {theme} from '../theme';
-import { BrowserRouter as Route, Link } from 'react-router-dom';
+import { BrowserRouter as Route, NavLink } from 'react-router-dom';
 
 const BigWrapper = styled.div`
 display: grid;
@@ -101,7 +101,6 @@ padding-top: 2vw;
 
 const linkStyle = {
     textDecoration: 'none',
-    transform: 'translateY(5px)'
 }
 
 
@@ -117,15 +116,27 @@ export const Navbar = (props) => {
         <ThemeProvider theme={theme}>
         <BigWrapper>
                 <BrandDiv>
-                    <Link to="/" style={linkStyle}>
+                    <NavLink to="/" style={linkStyle}>
                         <Brand>EXERCISE TRACKER</Brand>
-                    </Link>
+                    </NavLink>
                 </BrandDiv>
 
                 <DesktopMenuDiv>
-                    <Link to='/' style={linkStyle}><NavLinks>Exercises</NavLinks></Link>
-                    <Link to='/create' style={linkStyle}><NavLinks>Record Exercise</NavLinks></Link>
-                    <Link to='/user' style={linkStyle}><NavLinks>Create User</NavLinks></Link>
+                    <NavLink to='/' exact 
+                        style={linkStyle} 
+                        activeStyle={{borderBottom: "solid 2px white"}}>
+                        <NavLinks>Exercises</NavLinks>
+                    </NavLink>
+                    <NavLink to='/create' 
+                        style={linkStyle} 
+                        activeStyle={{borderBottom: "solid 2px white"}}>
+                            <NavLinks>Record Exercise</NavLinks>
+                    </NavLink>
+                    <NavLink to='/user' 
+                        style={linkStyle} 
+                        activeStyle={{borderBottom: "solid 2px white"}}>
+                            <NavLinks>Create User</NavLinks>
+                    </NavLink>
                 </DesktopMenuDiv>
 
                 <MobileMenuDiv>
