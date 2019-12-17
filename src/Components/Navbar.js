@@ -1,10 +1,10 @@
 import React, { useState, useRef } from 'react';
 import styled, {ThemeProvider} from 'styled-components';
-import { useOnClickOutside } from '../hooks';
+import { useOnClickOutside } from '../Contexts/BurgerContext.js';
 import { Burger, Menu } from './MenuParts';
 import FocusLock from 'react-focus-lock';
 import {theme} from '../theme';
-import { BrowserRouter as Route, NavLink } from 'react-router-dom';
+import { BrowserRouter as Route, Link } from 'react-router-dom';
 
 const BigWrapper = styled.div`
 display: grid;
@@ -42,24 +42,6 @@ transition: 0.8s;
 }
 `
 
-const DesktopMenuDiv = styled.div`
-display: grid;
-grid-template-columns: auto auto auto;
-grid-gap: 5%;
-height: 100%;
-padding-right: 15%;
-justify-content: right;
-align-items: center;
-text-decoration: none;
-transition: 0.8s;
-@media (max-width: ${({ theme }) => theme.tablet}) {
-    display: none;
-}
-&:hover {
-    cursor: pointer;
-}
-`
-
 const MobileMenuDiv = styled.div`
 display: none;
 padding-right: 15%;
@@ -69,13 +51,9 @@ transition: 0.8s;
 @media (max-width: ${({ theme }) => theme.tablet}) {
     display: grid;
 }
-&:hover {
-    cursor: pointer;
-}
 `
 
 const Brand = styled.h1`
-text-decoration: none;
 color: #FAFAFA;
 font-family: "Oxygen", sans-serif;
 font-style: italic;
@@ -88,10 +66,26 @@ font-size: 3.5vw;
     padding-top: 2vw;
     font-size: 7vw;
     }
+&:hover {
+    /* padding-bottom: 2px; */
+    border-bottom: solid 2px white;
+}
+`
+
+const DesktopMenuDiv = styled.div`
+display: grid;
+grid-template-columns: auto auto auto;
+grid-gap: 5%;
+padding-right: 15%;
+justify-content: right;
+align-items: center;
+transition: 0.8s;
+@media (max-width: ${({ theme }) => theme.tablet}) {
+    display: none;
+}
 `
 
 const NavLinks = styled.span`
-text-decoration: none;
 color: #FAFAFA;
 font-family: "Oxygen", sans-serif;
 font-size: 1.7vw;
@@ -99,7 +93,17 @@ padding-top: 2vw;
 @media (max-width: 848px) {
     font-size: 1.7vw;
     }
+&:hover {
+    cursor: pointer;
+    padding-bottom: 2px;
+    border-bottom: solid 2px white;
+}
 `
+
+const linkStyle = {
+    textDecoration: 'none',
+    transform: 'translateY(5px)'
+}
 
 
 export const Navbar = (props) => {
@@ -114,15 +118,15 @@ export const Navbar = (props) => {
         <ThemeProvider theme={theme}>
         <BigWrapper>
                 <BrandDiv>
-                    <NavLink to="/" >
+                    <Link to="/" style={linkStyle}>
                         <Brand>EXERCISE TRACKER</Brand>
-                    </NavLink>
+                    </Link>
                 </BrandDiv>
 
                 <DesktopMenuDiv>
-                    <NavLink to='/' activeClassName="active"><NavLinks>Exercises</NavLinks></NavLink>
-                    <NavLink to='/create' activeClassName="active"><NavLinks>Record Exercise</NavLinks></NavLink>
-                    <NavLink to='/user' activeClassName="active"><NavLinks>Create User</NavLinks></NavLink>
+                    <Link to='/' style={linkStyle}><NavLinks>Exercises</NavLinks></Link>
+                    <Link to='/create' style={linkStyle}><NavLinks>Record Exercise</NavLinks></Link>
+                    <Link to='/user' style={linkStyle}><NavLinks>Create User</NavLinks></Link>
                 </DesktopMenuDiv>
 
                 <MobileMenuDiv>
