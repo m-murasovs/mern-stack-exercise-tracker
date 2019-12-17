@@ -53,7 +53,7 @@ transition: 0.8s;
 `
 
 const Brand = styled.span`
-color: #FAFAFA;
+color: #F7F7F7;
 font-family: "Oxygen", sans-serif;
 font-style: italic;
 font-size: 3.5vw;
@@ -85,7 +85,7 @@ transition: 0.8s;
 `
 
 const NavLinks = styled.span`
-color: #FAFAFA;
+color: #F7F7F7;
 font-family: "Oxygen", sans-serif;
 font-size: 1.7vw;
 padding-top: 2vw;
@@ -122,20 +122,14 @@ export const Navbar = (props) => {
                 </BrandDiv>
 
                 <DesktopMenuDiv>
-                    <NavLink to='/' exact 
-                        style={linkStyle} 
-                        activeStyle={{borderBottom: "solid 2px white"}}>
+                    <NavLink to='/' exact style={linkStyle} activeStyle={{borderBottom: "solid 2px white"}}>
                         <NavLinks>Exercises</NavLinks>
                     </NavLink>
-                    <NavLink to='/create' 
-                        style={linkStyle} 
-                        activeStyle={{borderBottom: "solid 2px white"}}>
-                            <NavLinks>Record Exercise</NavLinks>
+                    <NavLink to='/create' style={linkStyle} activeStyle={{borderBottom: "solid 2px white"}}>
+                        <NavLinks>Record Exercise</NavLinks>
                     </NavLink>
-                    <NavLink to='/user' 
-                        style={linkStyle} 
-                        activeStyle={{borderBottom: "solid 2px white"}}>
-                            <NavLinks>Create User</NavLinks>
+                    <NavLink to='/user' style={linkStyle} activeStyle={{borderBottom: "solid 2px white"}}>
+                        <NavLinks>Create User</NavLinks>
                     </NavLink>
                 </DesktopMenuDiv>
 
