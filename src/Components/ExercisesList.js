@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ExerciseContext } from '../Contexts/ExerciseContext';
 import styled from 'styled-components';
@@ -42,7 +42,7 @@ font-size: 1.6em;
 const TableRow = styled(animated.tr)`
 margin: 1vw 0;
 transition: box-shadow 0.5s;
-will-change: transform;
+will-change: transform, opacity;
 border-radius: 5px;
 &:hover {
     cursor: pointer;
@@ -59,7 +59,13 @@ const trans = (x, y, s) => ` scale(${s})`
 const Exercise = props => {
 
     const [grow, set] = useSpring(() => ({ xys: [0, 0, 1], config: { mass: 1, tension: 210, friction: 20 } }))
+    const [flipped, setFlipped] = useState(false);
+    const { transform, opacity } = useSpring({
+        opacity: flipped ? 1 : 0,
+        transform: `perspective(600px) rotateX(${flipped? 180 : 0}deg)`,
+        config: { mass: 1, tension: 210, friction: 20 }
 
+    })
 
     return (
         <TableRow
