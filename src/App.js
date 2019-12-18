@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route} from 'react-router-dom';
-import styled from 'styled-components';
+import styled, { ThemeProvider } from 'styled-components';
 import "bootstrap/dist/css/bootstrap.min.css";
 import {Navbar} from './Components/Navbar';
 import ExercisesList from './Components/ExercisesList';
@@ -10,18 +10,20 @@ import CreateUser from './Components/CreateUser';
 import ExerciseContextProvider from './Contexts/ExerciseContext';
 import UserContextProvider from './Contexts/UserContext';
 import GlobalStyles from './Global';
+import { theme } from './theme.js';
 
 const BodyWrap = styled.div`
-padding-top: 200px;
+padding-top: 18vw;
 width: 70%;
 margin: auto;
 @media (max-width: ${({ theme }) => theme.mobile}) {
-        
+    padding-top: 24vw;
     }
 `
 
 const App = () => {
     return (
+        <ThemeProvider theme={theme} >
         <UserContextProvider>
         <ExerciseContextProvider>
             <GlobalStyles />
@@ -38,6 +40,7 @@ const App = () => {
             </Router>
         </ExerciseContextProvider>
         </UserContextProvider>
+        </ThemeProvider>
     );
 }
 

@@ -3,5 +3,6 @@ export const theme = {
   primaryLight: '#F7F7F7',
   primaryHover: '#62FBFF',
   mobile: '450px',
-  tablet: '768px'
+  tablet: '768px',
+  primaryFont: '"Oxygen", sans-serif',
 }

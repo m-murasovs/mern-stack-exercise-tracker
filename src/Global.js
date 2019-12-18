@@ -1,4 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
+import theme from './theme.js';
 
 const GlobalStyles = createGlobalStyle`
 
@@ -10,12 +11,11 @@ const GlobalStyles = createGlobalStyle`
         margin: 0;
         padding: 0;
         font-size: 10px;
+        font-family: ${({theme}) => theme.primaryFont};
     },
 
     body {
-        font-size: 1vw;
         color: #F2F2F2;
-        font-family: 'Roboto';
     }, 
 
 `

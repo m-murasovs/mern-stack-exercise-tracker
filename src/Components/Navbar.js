@@ -86,7 +86,7 @@ transition: 0.8s;
 
 const NavLinks = styled.span`
 color: #F7F7F7;
-font-family: "Oxygen", sans-serif;
+font-family: ${({ theme }) => theme.primaryFont};
 font-size: 1.7vw;
 padding-top: 2vw;
 @media (max-width: 848px) {
