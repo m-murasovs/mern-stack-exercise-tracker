@@ -6,19 +6,20 @@ import { animated, useSpring } from 'react-spring';
 
 const TableWrap = styled.div`
 overflow-x: auto;
-width: 70%;
 margin: auto;
-margin-bottom: 4vw;
+padding-bottom: 4vw;
 `
 
 export const Head = styled.div`
+width: 70%;
+margin: auto;
 font-size: 2.5em;
 font-style: italic;
-width: 100%;
-margin: auto;
 `
 
 const TableHead = styled.div`
+width: 70%;
+margin: auto;
 display: grid;
 grid-template-columns: 1fr 1.5fr 1fr 1fr;
 align-items: center;
@@ -38,19 +39,33 @@ padding: 0.6vw 0 0.6vw 1vw;
 font-size: 1.6em;
 `
 
-const CardFront = styled(animated.div)`
-display: grid;
-grid-template-columns: 1fr 1.5fr 1fr 1fr 1fr;
-margin: 1vw 0;
+const TaskCard = styled(animated.div)`
+width: 70%;
+margin: 1.2vw auto;
 transition: box-shadow 0.5s;
-will-change: transform, opacity;
+will-change: transform;
 border-radius: 5px;
 &:hover {
     cursor: pointer;
-    /* transform: scale(1.1); */
     background-color: #FFF;
     box-shadow: 0px 5px 30px -10px rgba(0, 0, 0, 0.4);
 }
+`
+
+const CardFront = styled(animated.div)`
+display: grid;
+grid-template-columns: 1fr 1.5fr 1fr 1fr;
+will-change: transform, opacity;
+width: 100%;
+margin: auto;
+`
+
+const CardBack = styled(animated.div)`
+display: grid;
+grid-template-columns: 1fr 0.2fr 1fr;
+will-change: transform, display;
+width: 100%;
+margin: auto;
 `
 
 // Functions for the grow animation
@@ -61,7 +76,7 @@ const trans = (x, y, s) => `scale(${s})`;
 const Exercise = props => {
 
     const [grow, set] = useSpring(() => ({ xys: [0, 0, 1], config: { mass: 1, tension: 210, friction: 20 } }))
-    const [flipped, setFlipped] = useState(false);
+    const [flipped, setFlipped] = useState(true);
     const { transform, opacity } = useSpring({
         opacity: flipped ? 1 : 0,
         transform: `perspective(600px) rotateX(${flipped? 180 : 0}deg)`,
@@ -69,21 +84,38 @@ const Exercise = props => {
 
     })
 
+    const mouseLeave = () => {
+        set({ xys: [0, 0, 1] });
+        setFlipped(true);
+    }
+
     return (
-        <CardFront
+        <TaskCard
             onMouseMove={({ clientX: x, clientY: y }) => set({ xys: calc(x, y) })}
-            onMouseLeave={() => set({ xys: [0, 0, 1] })}
+            onMouseLeave={mouseLeave}
             style={{ transform: grow.xys.interpolate(trans) }}
         >
-            <Content>{props.exercise.username}</Content>
-            <Content>{props.exercise.description}</Content>
-            <Content>{props.exercise.duration}</Content>
-            <Content>{props.exercise.date.substring(0, 10)}</Content>
-            <Content>
-                <Link to={'/edit/'+props.exercise._id}>edit</Link> | 
-                <a href='#' onClick={() => { props.deleteExercise(props.exercise._id)}}> delete</a> 
-            </Content>
-        </CardFront>
+            <CardFront 
+                style={{ opacity, 
+                        transform: transform.interpolate(t => `${t} rotateX(180deg)`), 
+                        display: flipped ? "grid" : "none" }}
+                onClick={() => setFlipped(state => !state)}>
+                <Content>{props.exercise.username}</Content>
+                <Content>{props.exercise.description}</Content>
+                <Content>{props.exercise.duration}</Content>
+                <Content>{props.exercise.date.substring(0, 10)}</Content>
+            </CardFront>
+
+            <CardBack 
+                style={{ opacity: opacity.interpolate(o => 1 - o), 
+                        transform , 
+                        display: flipped ? "none" : "grid"}}
+                onClick={() => setFlipped(state => !state)}>
+                <Content><Link to={'/edit/'+props.exercise._id}>edit</Link></Content>
+                <Content> | </Content>
+                <Content><a href='#' onClick={() => { props.deleteExercise(props.exercise._id)}}> delete</a></Content> 
+            </CardBack>
+        </TaskCard>
     )
 }
 
