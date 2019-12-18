@@ -1,7 +1,14 @@
 import React, { useContext, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { ExerciseContext } from '../Contexts/ExerciseContext';
-// import styled from 'styled-components';
+import styled from 'styled-components';
+import { animated, useSpring } from 'react-spring';
+
+export const Head = styled.span`
+font-size: 2em;
+font-style: italic;
+margin-bottom: 2vw;
+`
 
 const Exercise = props => {
     return (
@@ -18,7 +25,7 @@ const Exercise = props => {
     )
 }
 
-const ExercisesList = props => {
+const ExercisesList = () => {
     
     const { exercises, deleteExercise, getExercises } = useContext(ExerciseContext);
 
@@ -34,7 +41,7 @@ const ExercisesList = props => {
 
     return (
         <div>
-            <h3>Logged Exercises</h3>
+            <Head>EXERCISES</Head>
             <table className="table">
                 <thead className="thead-light">
                     <tr>

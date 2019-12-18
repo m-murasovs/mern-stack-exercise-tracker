@@ -13,7 +13,7 @@ import GlobalStyles from './Global';
 import { theme } from './theme.js';
 
 const BodyWrap = styled.div`
-padding-top: 18vw;
+padding-top: 16vw;
 width: 70%;
 margin: auto;
 @media (max-width: ${({ theme }) => theme.mobile}) {

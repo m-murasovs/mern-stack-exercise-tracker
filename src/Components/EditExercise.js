@@ -4,6 +4,7 @@ import 'react-datepicker/dist/react-datepicker.css';
 // import styled from 'styled-components';
 import axios from 'axios';
 import { UserContext } from '../Contexts/UserContext';
+import { Head } from './ExercisesList';
 
 const EditExercise = props => {
 
@@ -52,7 +53,7 @@ const EditExercise = props => {
 
     return (
         <div>
-            <h3>Edit Exercise</h3>
+            <Head>EDIT EXERCISE</Head>
             <form onSubmit={handleSubmit}>
                 <div className="form-group">
                     <label>
