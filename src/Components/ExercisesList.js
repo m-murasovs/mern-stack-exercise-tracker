@@ -4,10 +4,31 @@ import { ExerciseContext } from '../Contexts/ExerciseContext';
 import styled from 'styled-components';
 import { animated, useSpring } from 'react-spring';
 
+const TableWrap = styled.div`
+width: 90%;
+`
+
 export const Head = styled.span`
 font-size: 2em;
 font-style: italic;
-margin-bottom: 2vw;
+`
+
+const Table = styled.table`
+width: 100%;
+margin: auto;
+`
+
+const TableHead = styled.thead`
+background: ${({theme}) => theme.primaryDark};
+color: ${({theme}) => theme.primaryLight};
+opacity: 0.7;
+height: 3em;
+text-align: center;
+`
+
+const Category = styled.th`
+font-family: ${({theme}) => theme.primaryFont};
+font-style: normal;
 `
 
 const Exercise = props => {
@@ -40,23 +61,23 @@ const ExercisesList = () => {
     }
 
     return (
-        <div>
+        <TableWrap>
             <Head>EXERCISES</Head>
-            <table className="table">
-                <thead className="thead-light">
+            <Table>
+                <TableHead>
                     <tr>
-                        <th>Username</th>
-                        <th>Description</th>
-                        <th>Duration</th>
-                        <th>Date</th>
-                        <th>Actions</th>
+                        <Category>Username</Category>
+                        <Category>Description</Category>
+                        <Category>Duration</Category>
+                        <Category>Date</Category>
+                        <Category>Actions</Category>
                     </tr>
-                </thead>
+                </TableHead>
                 <tbody>
                     <ExerciseList />    
                 </tbody>          
-            </table>            
-        </div>
+            </Table>            
+        </TableWrap>
     )
 }
 
