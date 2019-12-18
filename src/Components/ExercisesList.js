@@ -6,40 +6,41 @@ import { animated, useSpring } from 'react-spring';
 
 const TableWrap = styled.div`
 overflow-x: auto;
-`
-
-export const Head = styled.div`
-font-size: 2em;
-font-style: italic;
-width: 70%;
-margin: auto;
-`
-
-const Table = styled.table`
 width: 70%;
 margin: auto;
 margin-bottom: 4vw;
 `
 
-const TableHead = styled.thead`
+export const Head = styled.div`
+font-size: 2.5em;
+font-style: italic;
+width: 100%;
+margin: auto;
+`
+
+const TableHead = styled.div`
+display: grid;
+grid-template-columns: 1fr 1.5fr 1fr 1fr;
+align-items: center;
 background: ${({theme}) => theme.primaryDark};
 height: 4em;
 `
 
-const Category = styled.th`
-font-family: "${({theme}) => theme.primaryFont}";
+const Category = styled.div`
 font-size: 1.8em;
 font-weight: normal;
 padding: 0.2vw 0 0 1vw;
 color: white;
 `
 
-const Content = styled.td`
+const Content = styled.div`
 padding: 0.6vw 0 0.6vw 1vw;
 font-size: 1.6em;
 `
 
-const TableRow = styled(animated.tr)`
+const CardFront = styled(animated.div)`
+display: grid;
+grid-template-columns: 1fr 1.5fr 1fr 1fr 1fr;
 margin: 1vw 0;
 transition: box-shadow 0.5s;
 will-change: transform, opacity;
@@ -69,7 +70,7 @@ const Exercise = props => {
     })
 
     return (
-        <TableRow
+        <CardFront
             onMouseMove={({ clientX: x, clientY: y }) => set({ xys: calc(x, y) })}
             onMouseLeave={() => set({ xys: [0, 0, 1] })}
             style={{ transform: grow.xys.interpolate(trans) }}
@@ -82,7 +83,7 @@ const Exercise = props => {
                 <Link to={'/edit/'+props.exercise._id}>edit</Link> | 
                 <a href='#' onClick={() => { props.deleteExercise(props.exercise._id)}}> delete</a> 
             </Content>
-        </TableRow>
+        </CardFront>
     )
 }
 
@@ -103,21 +104,15 @@ const ExercisesList = () => {
     return (
         <TableWrap>
             <Head>EXERCISES</Head>
-            <Table>
                 <TableHead>
-                    <tr>
                         <Category>Username</Category>
                         <Category>Description</Category>
                         <Category>Duration</Category>
                         <Category>Date</Category>
-                        <Category>Actions</Category>
-                    </tr>
                 </TableHead>
-                <tbody>
-                    <ExerciseList />    
-                </tbody>          
-            </Table>            
-        </TableWrap>
+                
+                <ExerciseList />           
+        </TableWrap>            
     )
 }
 
