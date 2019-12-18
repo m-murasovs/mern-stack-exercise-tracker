@@ -14,8 +14,9 @@ import { theme } from './theme.js';
 
 const BodyWrap = styled.div`
 padding-top: 16vw;
-width: 70%;
+width: 100%;
 margin: auto;
+background:  ${({ theme }) => theme.primaryLight})
 @media (max-width: ${({ theme }) => theme.mobile}) {
     padding-top: 24vw;
     }
