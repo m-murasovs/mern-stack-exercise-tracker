@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { animated } from 'react-spring';
 
+
 export const StyledMenu = styled(animated.nav)`
 background: ${({ theme }) => theme.primaryDark};
 color: ${({ theme }) => theme.primaryLight};
@@ -9,7 +10,7 @@ opacity: 0.8;
 padding: 3em 3em;
 position: absolute;
 right: 0;
-width: 40%;
+width: 30%;
 border-radius: 4px;
 
   @media (max-width: ${({ theme }) => theme.mobile}) {
@@ -27,10 +28,6 @@ border-radius: 4px;
     @media (max-width: ${({ theme }) => theme.mobile}) {
       font-size: 5vw;
       text-align: center;
-    }
-
-    &:hover {
-        color: ${({ theme }) => theme.primaryHover};
     }
   }
 `;

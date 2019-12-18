@@ -84,7 +84,7 @@ transition: 0.8s;
 }
 `
 
-const NavLinks = styled.span`
+export const NavLinks = styled.span`
 color: #F7F7F7;
 font-family: ${({ theme }) => theme.primaryFont};
 font-size: 1.7vw;
@@ -92,6 +92,9 @@ padding-top: 2vw;
 @media (max-width: 848px) {
     font-size: 1.7vw;
     }
+@media (max-width: ${({ theme }) => theme.mobile}) {
+    font-size: 0.8em;
+}
 &:hover {
     cursor: pointer;
     padding-bottom: 2px;

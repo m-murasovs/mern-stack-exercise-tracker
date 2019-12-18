@@ -4,6 +4,7 @@ import { StyledMenu } from './Menu.styled';
 import { BrowserRouter as Route, Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { useSpring } from 'react-spring';
+import { NavLinks } from '../../Navbar';
 
 
 const LinksCont = styled.div`
@@ -35,9 +36,9 @@ const Menu = ({ open, setOpen, ...props }) => {
     return (
         <StyledMenu open={open} aria-hidden={isHidden} {...props} style={dropStyle}>
             <LinksCont>
-                <Link to='/' onClick={() => setOpen(!open)}>Exercises</Link>
-                <Link to='/create' onClick={() => setOpen(!open)}>Record Exercise</Link>
-                <Link to='/user' onClick={() => setOpen(!open)}>Create User</Link>
+                <Link to='/' onClick={() => setOpen(!open)}><NavLinks>Exercises</NavLinks></Link>
+                <Link to='/create' onClick={() => setOpen(!open)}><NavLinks>Record Exercise</NavLinks></Link>
+                <Link to='/user' onClick={() => setOpen(!open)}><NavLinks>Create User</NavLinks></Link>
             </LinksCont>
         </StyledMenu>
   )
