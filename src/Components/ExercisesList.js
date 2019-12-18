@@ -39,6 +39,12 @@ padding: 0.6vw 0 0.6vw 1vw;
 font-size: 1.6em;
 `
 
+const BackLinks = styled.div`
+color: black;
+padding: 0.6vw 0;
+font-size: 1.6em;
+`
+
 const TaskCard = styled(animated.div)`
 width: 70%;
 margin: 1.2vw auto;
@@ -55,17 +61,18 @@ border-radius: 5px;
 const CardFront = styled(animated.div)`
 display: grid;
 grid-template-columns: 1fr 1.5fr 1fr 1fr;
-will-change: transform, opacity;
+will-change: transform, display;
 width: 100%;
 margin: auto;
 `
 
 const CardBack = styled(animated.div)`
 display: grid;
-grid-template-columns: 1fr 0.2fr 1fr;
+grid-template-columns: 1fr 1em 1fr;
 will-change: transform, display;
 width: 100%;
 margin: auto;
+text-align: center;
 `
 
 // Functions for the grow animation
@@ -77,11 +84,10 @@ const Exercise = props => {
 
     const [grow, set] = useSpring(() => ({ xys: [0, 0, 1], config: { mass: 1, tension: 210, friction: 20 } }))
     const [flipped, setFlipped] = useState(true);
-    const { transform, opacity } = useSpring({
-        opacity: flipped ? 1 : 0,
-        transform: `perspective(600px) rotateX(${flipped? 180 : 0}deg)`,
+    const { transform } = useSpring({
+        display: flipped ? 1 : 0,
+        transform: `perspective(600px) rotateX(${flipped ? 180 : 0}deg)`,
         config: { mass: 1, tension: 210, friction: 20 }
-
     })
 
     const mouseLeave = () => {
@@ -94,26 +100,21 @@ const Exercise = props => {
             onMouseMove={({ clientX: x, clientY: y }) => set({ xys: calc(x, y) })}
             onMouseLeave={mouseLeave}
             style={{ transform: grow.xys.interpolate(trans) }}
+            onClick={() => setFlipped(state => !state)}
         >
-            <CardFront 
-                style={{ opacity, 
-                        transform: transform.interpolate(t => `${t} rotateX(180deg)`), 
-                        display: flipped ? "grid" : "none" }}
-                onClick={() => setFlipped(state => !state)}>
+            <CardFront style={{transform: transform.interpolate(t => `${t} rotateX(180deg)`), 
+                        display: flipped ? "grid" : "none" }}>
                 <Content>{props.exercise.username}</Content>
                 <Content>{props.exercise.description}</Content>
                 <Content>{props.exercise.duration}</Content>
                 <Content>{props.exercise.date.substring(0, 10)}</Content>
             </CardFront>
 
-            <CardBack 
-                style={{ opacity: opacity.interpolate(o => 1 - o), 
-                        transform , 
-                        display: flipped ? "none" : "grid"}}
-                onClick={() => setFlipped(state => !state)}>
-                <Content><Link to={'/edit/'+props.exercise._id}>edit</Link></Content>
-                <Content> | </Content>
-                <Content><a href='#' onClick={() => { props.deleteExercise(props.exercise._id)}}> delete</a></Content> 
+            <CardBack style={{transform, display: flipped ? "none" : "grid"}}>
+                <Link to={'/edit/'+props.exercise._id}><BackLinks>EDIT EXERCISE</BackLinks></Link>
+                <BackLinks> | </BackLinks>
+                <a href='#' onClick={() => { props.deleteExercise(props.exercise._id)}}>
+                    <BackLinks>DELETE EXERCISE</BackLinks></a> 
             </CardBack>
         </TaskCard>
     )
