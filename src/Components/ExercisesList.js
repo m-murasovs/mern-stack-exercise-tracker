@@ -52,8 +52,9 @@ border-radius: 5px;
 }
 `
 
-const calc = (x, y) => [-(y - window.innerHeight / 2) / 20, (x - window.innerWidth / 2) / 20, 1.1]
-const trans = (x, y, s) => ` scale(${s})`
+// Functions for the grow animation
+const calc = (x, y) => [-(y - window.innerHeight / 2) / 20, (x - window.innerWidth / 2) / 20, 1.1];
+const trans = (x, y, s) => `scale(${s})`;
 
 
 const Exercise = props => {
