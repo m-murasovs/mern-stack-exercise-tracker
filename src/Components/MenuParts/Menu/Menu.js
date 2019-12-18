@@ -17,14 +17,14 @@ const Menu = ({ open, setOpen, ...props }) => {
 	const { x } = useSpring({
 		from: { x: 1 },
 		x: open ? 0 : 1,
-		config: { mass: 1, tension: 140, friction: 40 }
+		config: { mass: 10, tension: 140, friction: 40 }
     });
     
     const dropStyle = {
         transform: x
             .interpolate({
                 range: [0, 0.3, 0.6, 1],
-                output: [0, -5, 1, -450]
+                output: [0, -1, 3, -450]
             })
             .interpolate(xValue => `translate3d(0, ${xValue}px, 0`)
     }
