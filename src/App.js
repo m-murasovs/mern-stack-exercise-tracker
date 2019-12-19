@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import styled, { ThemeProvider } from 'styled-components';
 import "bootstrap/dist/css/bootstrap.min.css";
 import {Navbar} from './Components/Navbar';
-import ExercisesList from './Components/ExercisesList';
+import ExerciseTable from './Components/ExerciseTable';
 import EditExercise from './Components/EditExercise';
 import CreateExercise from './Components/CreateExercise';
 import CreateUser from './Components/CreateUser';
@@ -32,7 +32,7 @@ const App = () => {
                 <Navbar/>
                 <BodyWrap>
                     <Switch>
-                        <Route path="/" exact component={ExercisesList} />
+                        <Route path="/" exact component={ExerciseTable} />
                         <Route path="/edit/:id" component={EditExercise} />
                         <Route path="/create" component={CreateExercise} />
                         <Route path="/user" component={CreateUser} />

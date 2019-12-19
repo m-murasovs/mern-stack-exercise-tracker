@@ -4,7 +4,7 @@ import 'react-datepicker/dist/react-datepicker.css';
 // import styled from 'styled-components';
 import axios from 'axios';
 import { UserContext } from '../Contexts/UserContext';
-import { Head } from './ExercisesList';
+import { Head } from './ExerciseTable';
 
 const EditExercise = props => {
 
