@@ -25,6 +25,14 @@ grid-template-columns: 1fr 1.5fr 0.7fr 0.7fr;
 align-items: center;
 background: ${({theme}) => theme.primaryDark};
 height: 4em;
+@media (max-width: ${({ theme }) => theme.tablet}) {
+    display: grid;
+    grid-template-columns: none;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    width: 130px;
+    height: auto;
+    text-align: center;
+}
 `
 
 const Category = styled.div`
@@ -32,6 +40,10 @@ font-size: 1.8em;
 font-weight: normal;
 padding: 0.2vw 0 0 1vw;
 color: white;
+@media (max-width: ${({ theme }) => theme.tablet}) {
+    border-bottom: 1px solid white;
+    padding: 1vw;
+}
 `
 
 const Content = styled.div`
@@ -65,6 +77,10 @@ grid-template-columns: 1fr 1.5fr 0.7fr 0.7fr;
 will-change: transform, display;
 width: 100%;
 margin: auto;
+@media (max-width: ${({ theme }) => theme.tablet}) {
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+}
 `
 
 const CardBack = styled(animated.div)`
@@ -95,7 +111,7 @@ const Exercise = props => {
             onMouseLeave={mouseLeave}
             onClick={() => setFlipped(state => !state)}
         >
-            <CardFront style={{transform: transform.interpolate(t => `${t} rotateX(180deg)`), 
+            {/* <CardFront style={{transform: transform.interpolate(t => `${t} rotateX(180deg)`), 
                         display: flipped ? "grid" : "none" }}>
                 <Content>{props.exercise.username}</Content>
                 <Content>{props.exercise.description}</Content>
@@ -108,7 +124,7 @@ const Exercise = props => {
                 <BackLinks> CANCEL </BackLinks>
                 <a href='#' onClick={() => { props.deleteExercise(props.exercise._id)}}>
                     <BackLinks>DELETE EXERCISE</BackLinks></a> 
-            </CardBack>
+            </CardBack> */}
         </TaskCard>
     )
 }
