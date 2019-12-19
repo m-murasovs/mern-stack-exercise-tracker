@@ -21,7 +21,7 @@ const TableHead = styled.div`
 width: 70%;
 margin: auto;
 display: grid;
-grid-template-columns: 1fr 1.5fr 1fr 1fr;
+grid-template-columns: 1fr 1.5fr 0.7fr 0.7fr;
 align-items: center;
 background: ${({theme}) => theme.primaryDark};
 height: 4em;
@@ -48,19 +48,20 @@ font-size: 1.6em;
 const TaskCard = styled(animated.div)`
 width: 70%;
 margin: 1.2vw auto;
-transition: box-shadow 0.5s;
-will-change: transform;
+transition: all 0.5s;
 border-radius: 5px;
 &:hover {
     cursor: pointer;
+    will-change: transform;
     background-color: #FFF;
+    transform: scale(1.1);
     box-shadow: 0px 5px 30px -10px rgba(0, 0, 0, 0.4);
 }
 `
 
 const CardFront = styled(animated.div)`
 display: grid;
-grid-template-columns: 1fr 1.5fr 1fr 1fr;
+grid-template-columns: 1fr 1.5fr 0.7fr 0.7fr;
 will-change: transform, display;
 width: 100%;
 margin: auto;
@@ -68,38 +69,30 @@ margin: auto;
 
 const CardBack = styled(animated.div)`
 display: grid;
-grid-template-columns: 1fr 1em 1fr;
+grid-template-columns: 1fr 1fr 1fr;
 will-change: transform, display;
 width: 100%;
 margin: auto;
 text-align: center;
 `
 
-// Functions for the grow animation
-const calc = (x, y) => [-(y - window.innerHeight / 2) / 20, (x - window.innerWidth / 2) / 20, 1.1];
-const trans = (x, y, s) => `scale(${s})`;
-
 
 const Exercise = props => {
 
-    const [grow, set] = useSpring(() => ({ xys: [0, 0, 1], config: { mass: 1, tension: 210, friction: 20 } }))
     const [flipped, setFlipped] = useState(true);
-    const { transform } = useSpring({
+    const { transform, display } = useSpring({
         display: flipped ? 1 : 0,
         transform: `perspective(600px) rotateX(${flipped ? 180 : 0}deg)`,
-        config: { mass: 1, tension: 210, friction: 20 }
+        config: { mass: 1, tension: 120, friction: 20 },
     })
 
     const mouseLeave = () => {
-        set({ xys: [0, 0, 1] });
         setFlipped(true);
     }
 
     return (
         <TaskCard
-            onMouseMove={({ clientX: x, clientY: y }) => set({ xys: calc(x, y) })}
             onMouseLeave={mouseLeave}
-            style={{ transform: grow.xys.interpolate(trans) }}
             onClick={() => setFlipped(state => !state)}
         >
             <CardFront style={{transform: transform.interpolate(t => `${t} rotateX(180deg)`), 
@@ -112,7 +105,7 @@ const Exercise = props => {
 
             <CardBack style={{transform, display: flipped ? "none" : "grid"}}>
                 <Link to={'/edit/'+props.exercise._id}><BackLinks>EDIT EXERCISE</BackLinks></Link>
-                <BackLinks> | </BackLinks>
+                <BackLinks> CANCEL </BackLinks>
                 <a href='#' onClick={() => { props.deleteExercise(props.exercise._id)}}>
                     <BackLinks>DELETE EXERCISE</BackLinks></a> 
             </CardBack>
