@@ -17,16 +17,48 @@ font-size: 1.6em;
 margin: 1em auto 0.3em auto;
 `
 
-export const TextInput = styled.input`
+export const SelectBox = styled.select`
 height: 3em;
 width: 100%;
-border: solid grey 1px;
+border: solid lightgrey 1px;
 border-radius: 0.2em;
 padding-left: 0.5em;
 font-size: 1.6em;
 font-family: ${({ theme }) => theme.primaryFont };
-&:active {
+background: url("http://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/br_down.png") no-repeat right;
+    -webkit-appearance: none;
+    background-position: 99%;
+&:hover {
     border: solid black 1px;
+}
+&:focus {
+    border: solid black 1px;
+}
+`
+
+const OptionBox = styled.option`
+background: #FFFFFF;
+font-size: 1em;
+`
+
+export const TextInput = styled.input`
+height: 3em;
+width: 100%;
+border: solid lightgrey 1px;
+border-radius: 0.2em;
+padding-left: 0.5em;
+font-size: 1.6em;
+font-family: ${({ theme }) => theme.primaryFont };
+&:hover {
+    border: solid black 1px;
+}
+&:focus {
+    border: solid black 1px;
+}
+&::-webkit-inner-spin-button, 
+::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
 }
 `
 
@@ -40,7 +72,7 @@ color: white;
 margin-top: 2vw;
 `
 
-const RedStar = styled.span`
+export const RedStar = styled.span`
 color: red;
 `
 
@@ -79,7 +111,7 @@ const CreateExercise = () => {
         setTheDate(date);
     }
     const list = users.map(user => (
-        <option key={ user } value={ user }> {user} </option>
+        <OptionBox key={ user } value={ user }> {user} </OptionBox>
     ))
     return (
         <div>
@@ -87,15 +119,15 @@ const CreateExercise = () => {
             <Form onSubmit={handleSubmit}>
                 
                 <Label>Username <RedStar>*</RedStar></Label>
-                        <select
+                        <SelectBox
                         required
                         name="username"
                         onChange={handleChange}
                         value={exercise.username}
                         >
-                            <option>Please select user</option>
+                            <OptionBox>Please select user</OptionBox>
                             {list}
-                        </select>
+                        </SelectBox>
                 <Label>Description <RedStar>*</RedStar></Label>
                     <TextInput
                         required
@@ -113,6 +145,7 @@ const CreateExercise = () => {
                         value={exercise.duration}
                         onChange={handleChange}
                         placeholder={0}
+                        min={0}
                     />
                 <Label>Date <RedStar>*</RedStar></Label>
                     <DatePicker

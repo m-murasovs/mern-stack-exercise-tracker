@@ -18,6 +18,12 @@ const GlobalStyles = createGlobalStyle`
         color: #F2F2F2;
     }, 
 
+    input[type=number]::-webkit-inner-spin-button, 
+    input[type=number]::-webkit-outer-spin-button { 
+    -webkit-appearance: none; 
+    margin: 0; 
+    }
+
 `
 
 export default GlobalStyles;

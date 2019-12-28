@@ -11,6 +11,7 @@ import ExerciseContextProvider from './Contexts/ExerciseContext';
 import UserContextProvider from './Contexts/UserContext';
 import GlobalStyles from './Global';
 import { theme } from './theme.js';
+import './App.css';
 
 const BodyWrap = styled.div`
 padding-top: 16vw;
