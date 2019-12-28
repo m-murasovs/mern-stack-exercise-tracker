@@ -10,7 +10,7 @@ opacity: 0.8;
 padding: 3em 3em;
 position: absolute;
 right: 0;
-width: 30%;
+width: 40%;
 border-radius: 4px;
 
   @media (max-width: ${({ theme }) => theme.mobile}) {
