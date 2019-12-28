@@ -82,7 +82,7 @@ border-radius: 0.2em;
 border: solid 2px black;
 background: black;
 color: white;
-margin-top: 1.5em;
+margin-top: 1.8em;
 `
 
 export const RedStar = styled.span`

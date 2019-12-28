@@ -87,10 +87,14 @@ transition: 0.8s;
 export const NavLinks = styled.span`
 color: #F7F7F7;
 font-family: ${({ theme }) => theme.primaryFont};
+font-size: 1.8em;
 padding-top: 2vw;
 @media (max-width: 848px) {
-    font-size: 0.8em;
+    font-size: 1.6em;
     }
+@media (max-width: ${({ theme }) => theme.tablet}) {
+    font-size: 0.8em;
+}
 @media (max-width: ${({ theme }) => theme.mobile}) {
     font-size: 0.8em;
 }
