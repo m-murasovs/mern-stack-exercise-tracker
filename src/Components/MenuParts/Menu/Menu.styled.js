@@ -14,6 +14,7 @@ width: 40%;
 
   @media (max-width: ${({ theme }) => theme.mobile}) {
       width: 100%;
+      margin-top: 0;
     }
 
   a {
