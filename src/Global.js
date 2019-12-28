@@ -24,6 +24,24 @@ const GlobalStyles = createGlobalStyle`
     margin: 0; 
     }
 
+    .react-datepicker-wrapper,
+    .react-datepicker__input-container input {
+        display: block;
+        height: 2.3em;
+        width: 100%;
+        border: solid lightgrey 1px;
+        border-radius: 0.2em;
+        padding-left: 0.5em;
+        font-size: 1.4em;
+        font-family: ${({ theme }) => theme.primaryFont };
+}
+
+    .react-datepicker-wrapper,
+    .react-datepicker__input-container input:hover,
+    .react-datepicker__input-container input:focus {
+        border: solid black 1px;
+        cursor: pointer;
+    }
 `
 
 export default GlobalStyles;
