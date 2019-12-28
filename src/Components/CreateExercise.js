@@ -2,14 +2,51 @@ import React, { useState, useContext } from 'react';
 import { ExerciseContext } from '../Contexts/ExerciseContext';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
-// import styled from 'styled-components';
+import styled from 'styled-components';
 import { UserContext } from '../Contexts/UserContext';
+import { Head } from './ExerciseTable';
+
+export const Form = styled.form`
+width: 70%;
+margin: auto;
+`
+
+export const Label = styled.p`
+font-family: ${({ theme }) => theme.primaryFont };
+font-size: 1.6em;
+margin: 1em auto 0.3em auto;
+`
+
+export const TextInput = styled.input`
+height: 3em;
+width: 100%;
+border: solid grey 1px;
+border-radius: 0.2em;
+padding-left: 0.5em;
+font-size: 1.6em;
+font-family: ${({ theme }) => theme.primaryFont };
+&:active {
+    border: solid black 1px;
+}
+`
+
+export const Submit = styled.button`
+font-size: 1.6em;
+padding: 1vw 2vw;
+border-radius: 0.2em;
+border: solid 2px black;
+background: black;
+color: white;
+margin-top: 2vw;
+`
+
+const RedStar = styled.span`
+color: red;
+`
 
 const CreateExercise = () => {
     const { addExercise } = useContext(ExerciseContext);
-
     const { users } = useContext(UserContext);
-
     const [ theDate, setTheDate ] = useState(new Date ());
 
     const [ exercise, setExercise ] = useState({
@@ -35,29 +72,23 @@ const CreateExercise = () => {
             alert("Please complete the entire form.")
         }
     }
-
     const handleChange = e => {
         setExercise({...exercise, [e.target.name]: e.target.value, date: theDate });
     }
-
     const handleDate = date => {
         setTheDate(date);
     }
-
     const list = users.map(user => (
         <option key={ user } value={ user }> {user} </option>
     ))
-    
-
     return (
         <div>
-            <h3>Create New Exercise Log</h3>
-            <form onSubmit={handleSubmit}>
-                <div className="form-group">
-                    <label>Username:</label>
+            <Head>Add Exercise</Head>
+            <Form onSubmit={handleSubmit}>
+                
+                <Label>Username <RedStar>*</RedStar></Label>
                         <select
                         required
-                        className="form-control"
                         name="username"
                         onChange={handleChange}
                         value={exercise.username}
@@ -65,43 +96,36 @@ const CreateExercise = () => {
                             <option>Please select user</option>
                             {list}
                         </select>
-                </div>
-                <div className="form-group">
-                    <label>Description:</label>
-                    <input
+                <Label>Description <RedStar>*</RedStar></Label>
+                    <TextInput
                         required
                         type="text"
                         name="description"
-                        className="form-control"
                         value={exercise.description}
                         onChange={handleChange}
+                        placeholder="Running"
                     />
-                </div>
-                <div className="form-group">
-                    <label>Duration (minutes):</label>
-                    <input
+                <Label>Duration (minutes) <RedStar>*</RedStar></Label>
+                    <TextInput
                         required
                         type="number"
                         name="duration"
-                        className="form-control"
                         value={exercise.duration}
                         onChange={handleChange}
                         placeholder={0}
                     />
-                </div>
-                <div className="form-group">
-                    <label>Date:</label>
+                <Label>Date <RedStar>*</RedStar></Label>
                     <DatePicker
                         selected={theDate}
                         onChange={date => handleDate(date)}
                         onSelect={date => handleDate(date)}
                         dateFormat="dd/MM/yyyy"
                         name="date"
-                        
                     />
+                <div>
+                    <Submit onClick={handleSubmit}>Submit</Submit>
                 </div>
-                <button onClick={handleSubmit}>Submit</button>
-            </form>
+            </Form>
         </div>
     )
 }
