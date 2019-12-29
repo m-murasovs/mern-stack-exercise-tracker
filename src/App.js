@@ -14,7 +14,7 @@ import { theme } from './theme.js';
 import './App.css';
 
 const BodyWrap = styled.div`
-padding-top: 16vw;
+padding-top: 13vw;
 width: 100%;
 margin: auto;
 background:  ${({ theme }) => theme.primaryLight})
