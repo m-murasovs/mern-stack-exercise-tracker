@@ -5,6 +5,8 @@ import 'react-datepicker/dist/react-datepicker.css';
 import axios from 'axios';
 import { UserContext } from '../Contexts/UserContext';
 import { Head } from './ExerciseTable';
+import { Submit, FormWrap, Form, Label, TextInput, RedStar, SelectBox, OptionBox } from './CreateExercise';
+
 
 const EditExercise = props => {
 
@@ -52,65 +54,54 @@ const EditExercise = props => {
     }
 
     return (
-        <div>
+        <FormWrap>
             <Head>EDIT EXERCISE</Head>
-            <form onSubmit={handleSubmit}>
-                <div className="form-group">
-                    <label>
-                        Username:</label>
-                        <select
-                            required
-                            className="form-control"
-                            name="username"
-                            value={exercises.username}
-                            onChange={handleChange}
-                            >
-                            {users.map(user => (
-                                <option
-                                    key={user}
-                                    value={user}
-                                >{user}</option>
-                            ))}
-                        </select>
-                </div>
-                <div className="form-group">
-                    <label>Description:</label>
-                    <input
+            <Form onSubmit={handleSubmit}>
+                <Label>Username: <RedStar>*</RedStar></Label>
+                    <SelectBox
                         required
-                        type="text"
-                        name="description"
-                        className="form-control"
-                        value={exercises.description}
+                        name="username"
+                        value={exercises.username}
                         onChange={handleChange}
-                    />
+                        >
+                        {users.map(user => (
+                            <OptionBox
+                                key={user}
+                                value={user}
+                            >{user}</OptionBox>
+                        ))}
+                    </SelectBox>
+                <Label>Description: <RedStar>*</RedStar></Label>
+                <TextInput
+                    required
+                    type="text"
+                    name="description"
+                    value={exercises.description}
+                    onChange={handleChange}
+                />
+                <Label>Duration (minutes): <RedStar>*</RedStar></Label>
+                <TextInput
+                    required
+                    type="number"
+                    name="duration"
+                    value={exercises.duration}
+                    onChange={handleChange}
+                    placeholder={0}
+                    min={1}
+                />
+                <Label>Date:</Label>
+                <DatePicker
+                    selected={Date.parse(theDate)}
+                    onChange={date => handleDate(date)}
+                    onSelect={date => handleDate(date)}
+                    dateFormat="dd/MM/yyyy"
+                    name="date"
+                />
+                <div>
+                    <Submit onSubmit={handleSubmit}>Submit</Submit>
                 </div>
-                <div className="form-group">
-                    <label>Duration (minutes):</label>
-                    <input
-                        required
-                        type="number"
-                        name="duration"
-                        className="form-control"
-                        value={exercises.duration}
-                        onChange={handleChange}
-                        placeholder={0}
-                        min={1}
-                    />
-                </div>
-                <div className="form-group">
-                    <label>Date:</label>
-                    <DatePicker
-                        selected={Date.parse(theDate)}
-                        onChange={date => handleDate(date)}
-                        onSelect={date => handleDate(date)}
-                        dateFormat="dd/MM/yyyy"
-                        name="date"
-                        
-                    />
-                </div>
-                <button onSubmit={handleSubmit}>Submit</button>
-            </form>
-        </div>
+            </Form>
+        </FormWrap>
     )
 }
 

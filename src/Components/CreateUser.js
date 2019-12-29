@@ -1,7 +1,9 @@
 import React, { useState, useContext } from 'react';
 import 'react-datepicker/dist/react-datepicker.css';
-// import styled from 'styled-components';
+import styled from 'styled-components';
 import { UserContext } from '../Contexts/UserContext';
+import { Submit, FormWrap, Form, Label, TextInput, RedStar } from './CreateExercise';
+import { Head } from './ExerciseTable';
 
 const CreateExercise = () => {
     const { addUser } = useContext(UserContext);
@@ -24,12 +26,12 @@ const CreateExercise = () => {
     }
 
     return (
-        <div>
-            <h3>Create New User</h3>
-            <form onSubmit={handleSubmit}>
-                <div className="form-group">
-                    <label>Username:</label>
-                    <input
+        <FormWrap>
+            <Head>CREATE NEW USER</Head>
+            <Form onSubmit={handleSubmit}>
+                <div>
+                    <Label>Username: <RedStar>*</RedStar></Label>
+                    <TextInput
                         required
                         type="text"
                         name="username"
@@ -38,9 +40,9 @@ const CreateExercise = () => {
                         value={user.username}
                     />
                 </div>
-                <button onClick={handleSubmit}>Submit</button>
-            </form>
-        </div>
+                <Submit onClick={handleSubmit}>Submit</Submit>
+            </Form>
+        </FormWrap>
     )
 }
 

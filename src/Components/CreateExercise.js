@@ -45,7 +45,7 @@ background: url("http://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/1
 }
 `
 
-const OptionBox = styled.option`
+export const OptionBox = styled.option`
 background: #FFFFFF;
 font-size: 1em;
 `
