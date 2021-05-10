@@ -7,7 +7,7 @@
     "bootstrap": "^4.4.1",
     "cors": "^2.8.5",
     "eslint-utils": "^1.4.3",
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.21",
     "lodash.template": "^4.5.0",
     "mixin-deep": "^2.0.1",
     "mongoose": "^5.7.12",
